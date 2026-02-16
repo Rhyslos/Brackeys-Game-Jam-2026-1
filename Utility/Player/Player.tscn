@@ -7,14 +7,18 @@ radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="Node3D" unique_id=845561229]
+[node name="Player" type="CharacterBody3D" unique_id=1255467050 node_paths=PackedStringArray("CameraNode")]
 script = ExtResource("1_i1gnq")
+MouseSensitivity = 0.002
+CameraNode = NodePath("Camera3D")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1457394133]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=75992566]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=75992566]
 shape = SubResource("CapsuleShape3D_25vog")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1264100322]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1264100322]
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_i1gnq")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1135726242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+current = true
