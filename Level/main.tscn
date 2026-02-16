@@ -1,3 +1,11 @@
 [gd_scene format=3 uid="uid://cyaubgarffk8t"]
 
+[ext_resource type="Material" uid="uid://dhshd8c7kk14x" path="res://Assets/Shader/M_PrototypingGrid.tres" id="1_gqyk6"]
+
 [node name="Main" type="Node3D" unique_id=1740505170]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1246536595]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049999997, 0)
+material_override = ExtResource("1_gqyk6")
+use_collision = true
+size = Vector3(100, 0.1, 100)

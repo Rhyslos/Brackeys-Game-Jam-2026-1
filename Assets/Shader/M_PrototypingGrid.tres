@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dhshd8c7kk14x"]
+
+[ext_resource type="Shader" uid="uid://0lwhdynrkgkq" path="res://Assets/Shader/grid_world.gdshader" id="1_115tl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_115tl")
+shader_parameter/background_color = Color(0.8785476, 0.7086068, 0.071608506, 1)
+shader_parameter/main_grid_color = Color(0.22670749, 0.22670752, 0.22670743, 1)
+shader_parameter/grid_scale = 1.0
+shader_parameter/main_line_thickness = 0.02
+shader_parameter/subdivisions = 4
+shader_parameter/sub_grid_color = Color(0.3, 0.3, 0.3, 1)
+shader_parameter/sub_line_thickness = 0.01
+shader_parameter/line_sharpness = 1.0
