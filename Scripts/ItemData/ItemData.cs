@@ -8,7 +8,6 @@ public enum ItemCategory
 	Consumable,
 }
 
-
 [Tool]
 [GlobalClass]
 public partial class ItemData : Resource
@@ -17,27 +16,54 @@ public partial class ItemData : Resource
 	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
 	[Export] public Texture2D Icon { get; set; }
 
+	private ItemCategory _category;
+	[Export]
+	public ItemCategory Category
+	{
+		get => _category;
+		set
+		{
+			if (_category == value) return;
+			_category = value;
+			NotifyPropertyListChanged();
+		}
+	}
 
-	[ExportCategory("Category")]
-	[Export] public ItemCategory Category { get; set; }
+	[Export] public string DoorId { get; set; } = "";
+	[Export] public bool IsWinningPart { get; set; } = false;
 
+	[Export] public float HealthGain { get; set; }
+	[Export] public float StaminaGain { get; set; }
 
-	[ExportCategory("Item Stats")]
-	private bool _isConsumable = false;
-	[Export] public bool IsConsumable
-    {
-        get => _isConsumable;
-        set
-        {
-            if (_isConsumable == value) return;
-            
-            _isConsumable = value;
-            EmitChanged();
-            NotifyPropertyListChanged(); 
-        }
-    }
+	[Export] public float EffectDuration { get; set; }
+	[Export] public bool IsRegenBoost { get; set; }
 
-	// Item Stats if consumable
-	[Export] public float UseTime { get; set; } = 1f;
-	
+	public override void _ValidateProperty(Godot.Collections.Dictionary property)
+	{
+		string name = property["name"].AsStringName();
+
+		if (name == nameof(DoorId) && Category != ItemCategory.Key)
+		{
+			HideProperty(property);
+		}
+
+		if (name == nameof(IsWinningPart) && Category != ItemCategory.RepairItem)
+		{
+			HideProperty(property);
+		}
+
+		if (Category != ItemCategory.Consumable)
+		{
+			if (name == nameof(HealthGain) || name == nameof(StaminaGain) || 
+				name == nameof(EffectDuration) || name == nameof(IsRegenBoost))
+			{
+				HideProperty(property);
+			}
+		}
+	}
+
+	private void HideProperty(Godot.Collections.Dictionary property)
+	{
+		property["usage"] = (int)(PropertyUsageFlags.NoEditor | PropertyUsageFlags.Internal);
+	}
 }

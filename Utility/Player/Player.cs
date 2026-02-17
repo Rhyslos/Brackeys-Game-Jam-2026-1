@@ -13,6 +13,10 @@ public partial class Player : CharacterBody3D
     [Export] public float MouseSensitivity = 0.003f;
     [Export] public Node3D CameraNode;
 
+    // Custom Components
+    [ExportCategory("Components")]
+    [Export] public HealthComponent Health;
+
     public override void _Ready()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -22,7 +26,6 @@ public partial class Player : CharacterBody3D
             CameraNode = GetNode<Camera3D>("Camera");
         }
 
-        // Apply initial FOV
         if (CameraNode is Camera3D cam)
         {
             cam.Fov = BaseFov;
@@ -47,8 +50,8 @@ public partial class Player : CharacterBody3D
         
         if (@event.IsActionPressed("ui_cancel"))
         {
-             Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured ? 
-                               Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+            Input.MouseMode = Input.MouseMode == Input.MouseModeEnum.Captured ? 
+            Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
         }
 
     }
@@ -69,7 +72,7 @@ public partial class Player : CharacterBody3D
             velocity.Y = JumpVelocity;
         }
 
-        // 3. Movement (Instant/Snappy)
+        // 3. Movement (Instant)
         float currentSpeed = Input.IsActionPressed("Sprint") ? SprintSpeed : Speed;
         
         Vector2 inputDir = Input.GetVector("Left", "Right", "Forward", "Back");

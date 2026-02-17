@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dso6rx2n0mhrf"]
+
+[ext_resource type="Script" uid="uid://8xnhpx0g40sf" path="res://Scripts/ItemData/ItemData.cs" id="1_yidus"]
+
+[resource]
+script = ExtResource("1_yidus")
+Name = "Syringe"
+Description = "Item that slowly regenerates 5hp and 30 stamina with a 30 second effect."
+Category = 2
+HealthGain = 5.0
+StaminaGain = 30.0
+EffectDuration = 30.0
+IsRegenBoost = true
+metadata/_custom_type_script = "uid://8xnhpx0g40sf"
