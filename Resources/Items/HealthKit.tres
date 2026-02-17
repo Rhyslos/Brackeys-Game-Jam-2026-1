@@ -4,5 +4,8 @@
 
 [resource]
 script = ExtResource("1_cha5i")
+Name = "Health"
+Description = "Heals the player when consumed"
 Category = 2
+IsConsumable = true
 metadata/_custom_type_script = "uid://8xnhpx0g40sf"
