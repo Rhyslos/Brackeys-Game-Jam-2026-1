@@ -19,19 +19,25 @@ public partial class ItemData : Resource
 
 
 	[ExportCategory("Category")]
-	[Export] public ItemCategory Category {get; set; }
+	[Export] public ItemCategory Category { get; set; }
 
 
 	[ExportCategory("Item Stats")]
-	private bool _IsConsumable;
+	private bool _isConsumable = false;
 	[Export] public bool IsConsumable
-	{get => IsConsumable;
-		set 
-		{
-			if (_IsConsumable == value) return;
-			_IsConsumable = value;
-			EmitChanged(); 
-			NotifyPropertyListChanged(); // Refreshes the Inspector view
-		}
-	}	
+    {
+        get => _isConsumable;
+        set
+        {
+            if (_isConsumable == value) return;
+            
+            _isConsumable = value;
+            EmitChanged();
+            NotifyPropertyListChanged(); 
+        }
+    }
+
+	// Item Stats if consumable
+	[Export] public float UseTime { get; set; } = 1f;
+	
 }
