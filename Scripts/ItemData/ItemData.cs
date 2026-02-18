@@ -29,8 +29,8 @@ public partial class ItemData : Resource
 		}
 	}
 
-	[Export] public Resource PrimaryCraftingResource { get; set; }
-	[Export] public Resource SecondaryCraftingResource { get; set; }
+	[Export] public CraftingResource PrimaryCraftingResource { get; set; }
+	[Export] public CraftingResource SecondaryCraftingResource { get; set; }
 
 	[Export] public float HealthGain { get; set; }
 	[Export] public float StaminaGain { get; set; }

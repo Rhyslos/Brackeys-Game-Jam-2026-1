@@ -35,5 +35,8 @@ script = ExtResource("2_qfbe8")
 [node name="DamageComponent" type="Node" parent="." unique_id=569628128]
 script = ExtResource("3_1jbdv")
 
-[node name="Node" type="Node" parent="." unique_id=719407058]
+[node name="OxygenComponent" type="Node" parent="." unique_id=719407058]
+script = ExtResource("4_fkcoj")
+
+[node name="StaminaComponent" type="Node" parent="." unique_id=1483948939]
 script = ExtResource("4_fkcoj")
