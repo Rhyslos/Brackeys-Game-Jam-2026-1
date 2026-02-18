@@ -13,11 +13,6 @@ public partial class Player : CharacterBody3D
     [Export] public float MouseSensitivity = 0.003f;
     [Export] public Node3D CameraNode;
 
-    // Custom Components
-    [ExportCategory("Components")]
-    [Export] public HealthComponent Health;
-   // [Export] public OxygenComponent ;
-
     public override void _Ready()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -61,19 +56,16 @@ public partial class Player : CharacterBody3D
     {
         Vector3 velocity = Velocity;
 
-        // 1. Gravity
         if (!IsOnFloor())
         {
             velocity.Y -= Gravity * (float)delta;
         }
 
-        // 2. Jump
         if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
         {
             velocity.Y = JumpVelocity;
         }
 
-        // 3. Movement (Instant)
         float currentSpeed = Input.IsActionPressed("Sprint") ? SprintSpeed : Speed;
         
         Vector2 inputDir = Input.GetVector("Left", "Right", "Forward", "Back");
@@ -81,13 +73,11 @@ public partial class Player : CharacterBody3D
 
         if (direction != Vector3.Zero)
         {
-            // INSTANT START: Directly assign velocity without acceleration
             velocity.X = direction.X * currentSpeed;
             velocity.Z = direction.Z * currentSpeed;
         }
         else
         {
-            // INSTANT STOP: Directly set horizontal velocity to zero
             velocity.X = 0;
             velocity.Z = 0;
         }
@@ -95,7 +85,6 @@ public partial class Player : CharacterBody3D
         Velocity = velocity;
         MoveAndSlide();
 
-        // Temp quit method call
         if (Input.IsActionPressed("Pause"))
         {
             QuitGame();
@@ -103,7 +92,6 @@ public partial class Player : CharacterBody3D
 
     }
 
-    // Method to quit, must be changed later when pause menu is implemented
     public void QuitGame()
     {
         GetTree().Quit();

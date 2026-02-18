@@ -1,19 +1,16 @@
 [gd_scene format=3 uid="uid://djldhtmhx1cy0"]
 
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
-[ext_resource type="Script" uid="uid://m6ubat8niwps" path="res://Scripts/Character/HealthComponent.cs" id="2_qfbe8"]
-[ext_resource type="Script" uid="uid://ck46bvrqqu1w1" path="res://Scripts/Character/RegressComponent.cs" id="4_fkcoj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25vog"]
 radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1255467050 node_paths=PackedStringArray("CameraNode", "Health")]
+[node name="Player" type="CharacterBody3D" unique_id=1255467050 node_paths=PackedStringArray("CameraNode")]
 script = ExtResource("1_i1gnq")
 MouseSensitivity = 0.002
 CameraNode = NodePath("Camera")
-Health = NodePath("HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=75992566]
 shape = SubResource("CapsuleShape3D_25vog")
@@ -26,13 +23,3 @@ mesh = SubResource("CapsuleMesh_i1gnq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 current = true
 fov = 60.0
-
-[node name="HealthComponent" type="Node" parent="." unique_id=975304873]
-unique_name_in_owner = true
-script = ExtResource("2_qfbe8")
-
-[node name="OxygenComponent" type="Node" parent="." unique_id=719407058]
-script = ExtResource("4_fkcoj")
-
-[node name="StaminaComponent" type="Node" parent="." unique_id=1483948939]
-script = ExtResource("4_fkcoj")
