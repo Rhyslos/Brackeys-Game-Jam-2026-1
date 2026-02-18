@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ddfw8lqxo1lgd"]
+
+[node name="CraftingButton" type="Button" unique_id=1736505492]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "test"

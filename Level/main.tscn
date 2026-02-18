@@ -47,29 +47,3 @@ material = SubResource("ShaderMaterial_q3hbn")
 
 [node name="Player" parent="." unique_id=845561229 instance=ExtResource("2_r23e8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1, -0.1)
-
-[node name="UI_Elements" type="Control" parent="." unique_id=506258337]
-layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -99.0
-offset_right = 541.0
-grow_vertical = 0
-
-[node name="Panel" type="Panel" parent="UI_Elements" unique_id=1594436589]
-layout_mode = 0
-offset_top = -41.0
-offset_right = 270.0
-offset_bottom = -3.0
-
-[node name="Panel2" type="Panel" parent="UI_Elements" unique_id=22001087]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -270.0
-offset_top = -41.0
-offset_right = -1.0
-offset_bottom = -3.0
-grow_horizontal = 0
