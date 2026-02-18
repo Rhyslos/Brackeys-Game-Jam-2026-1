@@ -29,11 +29,8 @@ public partial class ItemData : Resource
 		}
 	}
 
-	[Export] public CraftingResource PrimaryCraftingResource { get; set; }
-	[Export] public CraftingResource SecondaryCraftingResource { get; set; }
-
-	[Export] public string DoorId { get; set; } = "";
-	[Export] public bool IsWinningPart { get; set; } = false;
+	[Export] public Resource PrimaryCraftingResource { get; set; }
+	[Export] public Resource SecondaryCraftingResource { get; set; }
 
 	[Export] public float HealthGain { get; set; }
 	[Export] public float StaminaGain { get; set; }
@@ -46,16 +43,6 @@ public partial class ItemData : Resource
 		string name = property["name"].AsStringName();
 
 		if ((name == nameof(PrimaryCraftingResource) || name == nameof(SecondaryCraftingResource)) && Category != ItemCategory.CraftingResource)
-		{
-			HideProperty(property);
-		}
-
-		if (name == nameof(DoorId) && Category != ItemCategory.CraftingResource)
-		{
-			HideProperty(property);
-		}
-
-		if (name == nameof(IsWinningPart) && Category != ItemCategory.RepairItem)
 		{
 			HideProperty(property);
 		}
