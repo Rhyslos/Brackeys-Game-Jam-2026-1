@@ -3,8 +3,9 @@ using System;
 
 public partial class DamageComponent : Node
 {
-    public void _OnTakingDamage()
+
+    [Export] public int DamageAmount;
+    public void _OnTakingDamage(int set)
     {
-        
     }
 }

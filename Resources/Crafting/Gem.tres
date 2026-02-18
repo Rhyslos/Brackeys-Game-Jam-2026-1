@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CraftingResource" format=3 uid="uid://b3brfvh8d1bj8"]
+
+[ext_resource type="Script" uid="uid://dgnvsv7efi8qu" path="res://Scripts/ItemData/CraftingResource.cs" id="1_vplcr"]
+
+[resource]
+script = ExtResource("1_vplcr")
+ResourceName = "Gem"
+ResourceID = "gem"
+metadata/_custom_type_script = "uid://dgnvsv7efi8qu"

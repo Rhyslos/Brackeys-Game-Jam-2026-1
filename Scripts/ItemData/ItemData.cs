@@ -3,7 +3,7 @@ using System;
 
 public enum ItemCategory
 {
-	Key,
+	CraftingResource,
 	RepairItem,
 	Consumable,
 }
@@ -29,6 +29,9 @@ public partial class ItemData : Resource
 		}
 	}
 
+	[Export] public CraftingResource PrimaryCraftingResource { get; set; }
+	[Export] public CraftingResource SecondaryCraftingResource { get; set; }
+
 	[Export] public string DoorId { get; set; } = "";
 	[Export] public bool IsWinningPart { get; set; } = false;
 
@@ -42,7 +45,12 @@ public partial class ItemData : Resource
 	{
 		string name = property["name"].AsStringName();
 
-		if (name == nameof(DoorId) && Category != ItemCategory.Key)
+		if ((name == nameof(PrimaryCraftingResource) || name == nameof(SecondaryCraftingResource)) && Category != ItemCategory.CraftingResource)
+		{
+			HideProperty(property);
+		}
+
+		if (name == nameof(DoorId) && Category != ItemCategory.CraftingResource)
 		{
 			HideProperty(property);
 		}

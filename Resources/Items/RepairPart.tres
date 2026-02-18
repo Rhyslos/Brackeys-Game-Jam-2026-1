@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bqqb18sknt12h"]
+
+[ext_resource type="Script" uid="uid://8xnhpx0g40sf" path="res://Scripts/ItemData/ItemData.cs" id="1_6ptpj"]
+
+[resource]
+script = ExtResource("1_6ptpj")
+Name = "RepairPart"
+Description = "Item used to repair the ship"
+metadata/_custom_type_script = "uid://8xnhpx0g40sf"

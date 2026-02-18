@@ -6,6 +6,5 @@
 script = ExtResource("1_jmcp2")
 Name = "Medic Kit"
 Description = "Heals the player when consumed instantly with 5 health points."
-Category = 2
 HealthGain = 10.0
 metadata/_custom_type_script = "uid://8xnhpx0g40sf"
