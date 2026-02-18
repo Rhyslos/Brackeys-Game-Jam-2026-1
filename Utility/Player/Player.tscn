@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
 [ext_resource type="Script" uid="uid://m6ubat8niwps" path="res://Scripts/Character/HealthComponent.cs" id="2_qfbe8"]
-[ext_resource type="Script" uid="uid://dhciiw480are8" path="res://Scripts/Character/DamageComponent.cs" id="3_1jbdv"]
 [ext_resource type="Script" uid="uid://ck46bvrqqu1w1" path="res://Utility/Player/RegressComponent.cs" id="4_fkcoj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25vog"]
@@ -31,9 +30,6 @@ fov = 60.0
 [node name="HealthComponent" type="Node" parent="." unique_id=975304873]
 unique_name_in_owner = true
 script = ExtResource("2_qfbe8")
-
-[node name="DamageComponent" type="Node" parent="." unique_id=569628128]
-script = ExtResource("3_1jbdv")
 
 [node name="OxygenComponent" type="Node" parent="." unique_id=719407058]
 script = ExtResource("4_fkcoj")

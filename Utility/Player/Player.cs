@@ -16,6 +16,7 @@ public partial class Player : CharacterBody3D
     // Custom Components
     [ExportCategory("Components")]
     [Export] public HealthComponent Health;
+   // [Export] public OxygenComponent ;
 
     public override void _Ready()
     {

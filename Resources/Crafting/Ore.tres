@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="CraftingResource" format=3 uid="uid://dcpfscv721inw"]
-
-[ext_resource type="Script" uid="uid://dgnvsv7efi8qu" path="res://Scripts/ItemData/CraftingResource.cs" id="1_liak7"]
-
-[resource]
-script = ExtResource("1_liak7")
-ResourceName = "Ore"
-ResourceID = "ore"
-metadata/_custom_type_script = "uid://dgnvsv7efi8qu"
