@@ -4,6 +4,8 @@
 [ext_resource type="Shader" uid="uid://0lwhdynrkgkq" path="res://Assets/Shader/grid_world.gdshader" id="2_eo7o3"]
 [ext_resource type="PackedScene" uid="uid://djldhtmhx1cy0" path="res://Utility/Player/Player.tscn" id="2_r23e8"]
 [ext_resource type="PackedScene" uid="uid://b6bc8eaf43l2n" path="res://Utility/Resources/OreDeposit.tscn" id="4_q3hbn"]
+[ext_resource type="Resource" uid="uid://22v0upjoq7fv" path="res://Resources/Crafting/Titanium.tres" id="5_oycwn"]
+[ext_resource type="Resource" uid="uid://c507hcthjf81m" path="res://Resources/Crafting/Uranium.tres" id="6_y023f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r23e8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,6 +39,7 @@ environment = SubResource("Environment_q3hbn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1124997335]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 11, 0)
+visible = false
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1246536595]
@@ -51,3 +54,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1, -0.1)
 
 [node name="Node3D" parent="." unique_id=1142073388 instance=ExtResource("4_q3hbn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1510911, 0, -7.7375336)
+
+[node name="OreDeposit" parent="." unique_id=1972586395 instance=ExtResource("4_q3hbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3701982, -1.4305115e-06, -7.1988173)
+DepositData = ExtResource("5_oycwn")
+
+[node name="OreDeposit2" parent="." unique_id=1050127018 instance=ExtResource("4_q3hbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.645017, -1.4305115e-06, -6.3578086)
+DepositData = ExtResource("6_y023f")

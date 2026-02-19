@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="OreData" format=3 uid="uid://c507hcthjf81m"]
+
+[ext_resource type="Script" uid="uid://2cq1k1lwafoi" path="res://Scripts/Item Scripts/OreData.cs" id="1_5iouu"]
+[ext_resource type="ArrayMesh" uid="uid://c7vkr7w4btw43" path="res://Assets/Mesh/Uranium_Mesh.tres" id="1_4451s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl1y1"]
+albedo_color = Color(1, 1, 1, 0)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 3.95
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4451s"]
+next_pass = SubResource("StandardMaterial3D_pl1y1")
+albedo_color = Color(0.019294403, 0.3823565, 1.0588765e-06, 1)
+
+[resource]
+script = ExtResource("1_5iouu")
+OreMaterial = SubResource("StandardMaterial3D_4451s")
+MaxHealth = 6000.0
+OreMesh = ExtResource("1_4451s")
+metadata/_custom_type_script = "uid://2cq1k1lwafoi"

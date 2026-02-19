@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://dm0tmwc4j73ku" path="res://Utility/Resources/DroppedResource.cs" id="1_efusk"]
 [ext_resource type="ArrayMesh" uid="uid://dn2yn3oiu3dm7" path="res://Assets/Mesh/Ice_Mesh.tres" id="2_joy1b"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_joy1b"]
-points = PackedVector3Array(0.15661162, 0.01682444, 0.11624338, -2.669543e-05, 0.085755266, 0.14599733, 0.08481356, -0.03519292, 0.09534986, 0.127485, -0.058418825, 0.063452244, 0.1377494, -0.010931, 0.03155464, 0.037353806, 0.09026071, -0.055020526, -0.0049472675, 0.15102392, -0.055020526, -0.06502591, 0.03388246, 0.06788248, -0.11364966, -0.076031, 0.046531647, -0.015185237, -0.016327895, 0.09740777, 0.021586798, -0.09511287, -0.0022579879, 0.054311283, -0.08012686, -0.04167269, -2.669543e-05, -0.08578877, -0.14599733, 0.06497253, -0.033915978, -0.06793963, 0.008121356, 0.09026071, -0.095264114, -0.03920611, 0.09026071, -0.07991553, -0.03920611, 0.09026071, -0.030154109, -0.09642764, -0.029699653, 0.005916491, -0.100713305, -0.06675509, -0.015434325, -0.07277714, -0.09492012, 0.0011147112, -0.055634487, -0.009051725, -0.08254509)
-
 [node name="DroppedResource" type="RigidBody3D" unique_id=248944743]
+gravity_scale = 0.6
 continuous_cd = true
 script = ExtResource("1_efusk")
 
@@ -14,4 +12,6 @@ script = ExtResource("1_efusk")
 mesh = ExtResource("2_joy1b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=337002243]
-shape = SubResource("ConvexPolygonShape3D_joy1b")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=104555621]
+bus = &"OreSounds"

@@ -8,7 +8,7 @@ radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("CameraNode", "FloorCheck")]
+[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("CameraNode", "FloorCheck") groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

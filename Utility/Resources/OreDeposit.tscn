@@ -18,6 +18,8 @@ DepositData = ExtResource("3_fj1yy")
 DroppedOreScene = ExtResource("2_7rm31")
 MaxHealth = 3000.0
 TotalDrops = 6
+minRange = 0.3
+maxRange = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1549441615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

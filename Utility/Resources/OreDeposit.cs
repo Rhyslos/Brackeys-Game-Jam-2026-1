@@ -11,6 +11,9 @@ public partial class OreDeposit : StaticBody3D
     [Export] public float MaxHealth = 100.0f;
     [Export] public int TotalDrops = 5;
 
+    [Export] public float minRange = 1.0f;
+    [Export] public float maxRange = 5.0f;
+
     private float _currentHealth;
     private int _dropsRemaining;
     private Array<Node> _spawnPoints;
@@ -21,9 +24,15 @@ public partial class OreDeposit : StaticBody3D
 
     public override void _Ready()
     {
+        if (DepositData != null)
+        {
+            MaxHealth = DepositData.MaxHealth;
+        }
+
         _currentHealth = MaxHealth;
         _dropsRemaining = TotalDrops;
 
+        // Setup UI
         _healthBar = GetNode<ProgressBar>("Sprite3D/SubViewport/ProgressBar");
         _healthBarSprite = GetNode<Sprite3D>("Sprite3D");
         _hideTimer = GetNode<Timer>("Timer");
@@ -46,9 +55,10 @@ public partial class OreDeposit : StaticBody3D
                     visualMesh.Mesh = DepositData.OreMesh;
                     visualMesh.Scale = DepositData.VisualScale;
 
-                    StandardMaterial3D mat = new StandardMaterial3D();
-                    mat.AlbedoColor = DepositData.OreColor;
-                    visualMesh.SetSurfaceOverrideMaterial(0, mat);
+                    if (DepositData.OreMaterial != null)
+                    {
+                        visualMesh.SetSurfaceOverrideMaterial(0, DepositData.OreMaterial);
+                    }
 
                     marker.AddChild(visualMesh);
                 }
@@ -104,13 +114,17 @@ public partial class OreDeposit : StaticBody3D
                 return;
             }
 
+            float dropForce = (float)GD.RandRange(minRange, maxRange);
+
+
             var drop = DroppedOreScene.Instantiate<DroppedResource>();
             drop.Data = DepositData;
 
             GetTree().CurrentScene.AddChild(drop);
 
             drop.GlobalPosition = spawnPoint.GlobalPosition;
-            Vector3 popForce = spawnPoint.GlobalBasis.Y * 3.0f;
+            Vector3 popForce = spawnPoint.GlobalBasis.Y * dropForce;
+            GD.Print(dropForce);
             drop.ApplyCentralImpulse(popForce);
 
             spawnPoint.QueueFree();

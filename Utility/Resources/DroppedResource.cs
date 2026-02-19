@@ -1,32 +1,50 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class DroppedResource : RigidBody3D
 {
     public OreData Data;
+    
+    private static HashSet<string> _activeAudioTypes = new HashSet<string>();
 
     public override void _Ready()
     {
         if (Data != null)
         {
             ApplyOreData();
+            HandleAmbientAudio();
         }
+    }
+
+    private void HandleAmbientAudio()
+    {
+        if (Data.AmbientSound == null || _activeAudioTypes.Contains(Data.OreName)) 
+            return;
+
+        var audioPlayer = GetNodeOrNull<AudioStreamPlayer3D>("AmbientPlayer");
+        if (audioPlayer == null) return;
+
+        audioPlayer.Stream = Data.AmbientSound;
+        audioPlayer.Play();
+        _activeAudioTypes.Add(Data.OreName);
+
+        TreeExiting += () => _activeAudioTypes.Remove(Data.OreName);
     }
 
     private void ApplyOreData()
     {
-        var meshInstance = GetNode<MeshInstance3D>("MeshInstance3D");
+        var meshInstance = GetNodeOrNull<MeshInstance3D>("MeshInstance3D");
+        if (meshInstance == null) return;
 
-        if (meshInstance != null)
-        {
-            meshInstance.Mesh = Data.OreMesh;
+        meshInstance.Mesh = Data.OreMesh;
+        meshInstance.Scale = Data.VisualScale;
 
-            meshInstance.Scale = Data.VisualScale;
-
-            StandardMaterial3D material = new StandardMaterial3D();
-            material.AlbedoColor = Data.OreColor;
+        if (Data.OreMaterial != null)
+            meshInstance.SetSurfaceOverrideMaterial(0, Data.OreMaterial);
             
-            meshInstance.SetSurfaceOverrideMaterial(0, material);
-        }
+        var colShape = GetNodeOrNull<CollisionShape3D>("CollisionShape3D");
+        if (colShape != null && meshInstance.Mesh != null)
+            colShape.Shape = meshInstance.Mesh.CreateConvexShape();
 
         Name = $"Dropped_{Data.OreName}";
     }
