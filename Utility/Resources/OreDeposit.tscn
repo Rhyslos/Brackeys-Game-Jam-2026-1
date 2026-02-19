@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://b6bc8eaf43l2n"]
+
+[ext_resource type="Script" uid="uid://bac0xupxrvmsi" path="res://Utility/Resources/OreDeposit.cs" id="1_ra1hj"]
+[ext_resource type="PackedScene" uid="uid://bhd6h0s86klac" path="res://Utility/Resources/DroppedResource.tscn" id="2_7rm31"]
+[ext_resource type="Resource" uid="uid://bibvsjx77s48" path="res://Resources/Crafting/Ice.tres" id="3_fj1yy"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x7ohe"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jg80m"]
+radius = 0.5131836
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ra1hj"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="OreDeposit" type="StaticBody3D" unique_id=1972586395]
+script = ExtResource("1_ra1hj")
+DepositData = ExtResource("3_fj1yy")
+DroppedOreScene = ExtResource("2_7rm31")
+MaxHealth = 3000.0
+TotalDrops = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1549441615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_x7ohe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2008112850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_jg80m")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1487842788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1759255, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ra1hj")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=2058473737]
+transparent_bg = true
+size = Vector2i(200, 20)
+size_2d_override = Vector2i(200, 20)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Sprite3D/SubViewport" unique_id=1751911263]
+modulate = Color(0.94110006, 0.7625974, 0.5726269, 1)
+offset_right = 200.0
+offset_bottom = 20.0
+value = 50.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=1650458754]
+wait_time = 3.0
+one_shot = true
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=713425593]
+
+[node name="Marker3D" type="Marker3D" parent="SpawnPoints" unique_id=1707823220]
+transform = Transform3D(0.68793666, 0.7257707, 0, -0.7257707, 0.68793666, 0, 0, 0, 1, 0.5089789, 1.3504193, -2.3841858e-07)
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnPoints" unique_id=2108661572]
+transform = Transform3D(0.34676164, 0.36583224, -0.86366844, -0.72577065, 0.6879367, 0, 0.59414923, 0.6268252, 0.5040604, 0.24070472, 1.4733757, 0.4141767)
+
+[node name="Marker3D3" type="Marker3D" parent="SpawnPoints" unique_id=2104670821]
+transform = Transform3D(-0.68793666, -0.7257707, 1.509958e-07, -0.7257707, 0.68793666, 0, -1.0387555e-07, -1.0958833e-07, -1, -0.5605177, 1.4436696, -2.3841858e-07)
+
+[node name="Marker3D4" type="Marker3D" parent="SpawnPoints" unique_id=1961771406]
+transform = Transform3D(-0.6900307, -0.36290085, -0.6262273, -0.6664154, 0.65613955, 0.35407817, 0.28239727, 0.6616523, -0.69459915, -0.26740813, 0.95427835, 0.45009738)
+
+[node name="Marker3D5" type="Marker3D" parent="SpawnPoints" unique_id=1466646417]
+transform = Transform3D(-0.12840644, 0.76899356, -0.6262273, 0.8319145, 0.42725527, 0.3540781, 0.5398428, -0.4755016, -0.69459915, 0.35014874, 1.8352461, -0.35892788)
+
+[node name="Marker3D6" type="Marker3D" parent="SpawnPoints" unique_id=741145115]
+transform = Transform3D(-0.6672296, 0.027506828, 0.744344, -0.7415303, 0.06974283, -0.66728467, -0.07026759, -0.99718565, -0.026137322, -0.07302141, 0.9766835, -0.5023369)

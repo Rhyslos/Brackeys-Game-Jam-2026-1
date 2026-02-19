@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://dhshd8c7kk14x" path="res://Assets/Shader/M_PrototypingGrid.tres" id="1_gqyk6"]
 [ext_resource type="Shader" uid="uid://0lwhdynrkgkq" path="res://Assets/Shader/grid_world.gdshader" id="2_eo7o3"]
 [ext_resource type="PackedScene" uid="uid://djldhtmhx1cy0" path="res://Utility/Player/Player.tscn" id="2_r23e8"]
+[ext_resource type="PackedScene" uid="uid://b6bc8eaf43l2n" path="res://Utility/Resources/OreDeposit.tscn" id="4_q3hbn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r23e8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -47,3 +48,6 @@ material = SubResource("ShaderMaterial_q3hbn")
 
 [node name="Player" parent="." unique_id=845561229 instance=ExtResource("2_r23e8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1, -0.1)
+
+[node name="Node3D" parent="." unique_id=1142073388 instance=ExtResource("4_q3hbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1510911, 0, -7.7375336)

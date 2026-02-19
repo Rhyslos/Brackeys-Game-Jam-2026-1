@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://djldhtmhx1cy0"]
 
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
+[ext_resource type="PackedScene" uid="uid://crj3cegm4ee7p" path="res://Utility/Player/Scanner.tscn" id="2_qfbe8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25vog"]
 radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1255467050 node_paths=PackedStringArray("CameraNode")]
+[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("CameraNode", "FloorCheck")]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+can_sleep = false
 script = ExtResource("1_i1gnq")
-MouseSensitivity = 0.002
 CameraNode = NodePath("Camera")
+FloorCheck = NodePath("FloorCheck")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=75992566]
 shape = SubResource("CapsuleShape3D_25vog")
@@ -23,3 +28,10 @@ mesh = SubResource("CapsuleMesh_i1gnq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 current = true
 fov = 60.0
+
+[node name="Scanner" parent="Camera" unique_id=895938317 instance=ExtResource("2_qfbe8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33297044, -0.42873365, -0.46349955)
+
+[node name="FloorCheck" type="RayCast3D" parent="." unique_id=1617688472]
+transform = Transform3D(1, 0, 0, 0, 0.305, 0, 0, 0, 1, 0, -0.81336933, 0)
+target_position = Vector3(0, -1.1, 0)
