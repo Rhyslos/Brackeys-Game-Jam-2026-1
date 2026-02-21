@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2cq1k1lwafoi" path="res://Scripts/Item Scripts/OreData.cs" id="1_5iouu"]
 [ext_resource type="ArrayMesh" uid="uid://c7vkr7w4btw43" path="res://Assets/Extracted Mesh/Ores/Uranium_Mesh.tres" id="1_4451s"]
+[ext_resource type="AudioStream" uid="uid://ct288l86bbls8" path="res://Assets/Sound effects/Ambiance/GeigerCounter.mp3" id="1_pl1y1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl1y1"]
 albedo_color = Color(1, 1, 1, 0)
@@ -17,6 +18,7 @@ albedo_color = Color(0.019294403, 0.3823565, 1.0588765e-06, 1)
 script = ExtResource("1_5iouu")
 OreName = "Uranium"
 OreMaterial = SubResource("StandardMaterial3D_4451s")
-MaxHealth = 12000.0
+MaxHealth = 1000.0
 OreMesh = ExtResource("1_4451s")
+AmbientSound = ExtResource("1_pl1y1")
 metadata/_custom_type_script = "uid://2cq1k1lwafoi"

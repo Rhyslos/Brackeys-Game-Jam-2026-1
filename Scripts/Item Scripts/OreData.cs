@@ -3,6 +3,7 @@ using Godot;
 [GlobalClass]
 public partial class OreData : Resource
 {
+    // exported variables
     [Export] public string OreName = "Unknown Ore";
     [Export] public Material OreMaterial;
     [Export] public float MaxHealth = 100.0f;
