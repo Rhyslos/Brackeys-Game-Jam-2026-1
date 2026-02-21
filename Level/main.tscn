@@ -313,6 +313,81 @@ use_collision = true
 radius = 21.531738
 material = ExtResource("1_gqyk6")
 
+[node name="CSGCylinder3D38" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=629255739]
+transform = Transform3D(0.36482072, 0, 0.038724404, 0, 1, 0, -0.2294022, 0, 0.061583854, 127.64144, -3.8146973e-06, 30.775955)
+use_collision = true
+radius = 21.531738
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D39" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=773971826]
+transform = Transform3D(-0.21917172, 0, 0.06263656, 0, 1, 0, -0.37105712, 0, -0.036997452, 115.4863, -3.8146973e-06, 27.689629)
+use_collision = true
+radius = 21.531738
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D40" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=449422344]
+transform = Transform3D(-0.42034903, 0, 0.016037758, 0, 1, 0, -0.095007315, 0, -0.07095732, 98.42672, -0.023250103, 15.709839)
+use_collision = true
+radius = 21.531738
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=2049017086]
+transform = Transform3D(-0.29424942, 0, 0.053150173, 0, 1, 0, -0.3148603, 0, -0.049671188, 68.327255, -0.023250103, 2.0682068)
+use_collision = true
+radius = 16.405273
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D45" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=480618304]
+transform = Transform3D(-0.29424942, 0, 0.053150173, 0, 1, 0, -0.3148603, 0, -0.04967119, 70.16121, -0.023250103, -18.57442)
+use_collision = true
+radius = 16.405273
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D46" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=153785635]
+transform = Transform3D(-0.29424942, 0, 0.053150173, 0, 1, 0, -0.3148603, 0, -0.049671195, 66.50241, -0.023250103, -11.811821)
+use_collision = true
+radius = 16.405273
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D47" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=737399403]
+transform = Transform3D(-0.29424942, 0, 0.053150173, 0, 1, 0, -0.3148603, 0, -0.0496712, 63.54843, -0.023250103, -8.010132)
+use_collision = true
+radius = 16.405273
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D48" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=560320254]
+transform = Transform3D(-0.29424942, 0, 0.053150173, 0, 1, 0, -0.3148603, 0, -0.049671203, 58.840137, -0.023250103, -4.7074127)
+use_collision = true
+radius = 16.405273
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D49" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=27260860]
+transform = Transform3D(-0.29424942, 0, 0.053150173, 0, 1, 0, -0.3148603, 0, -0.049671207, 53.210274, -0.023250103, -1.9382629)
+use_collision = true
+radius = 16.405273
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D41" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=1452872200]
+transform = Transform3D(-0.29615638, 0, 0.05284751, 0, 1, 0, -0.31306723, 0, -0.049992923, 78.25442, -0.8269611, 2.4828568)
+use_collision = true
+radius = 21.531738
+height = 3.6074219
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D42" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=1167321144]
+transform = Transform3D(-0.29615638, 0, 0.05284751, 0, 1, 0, -0.31306723, 0, -0.049992926, 80.5361, -0.8269611, 16.489983)
+use_collision = true
+radius = 21.531738
+height = 3.6074219
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D43" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=1764598080]
+transform = Transform3D(-0.16797777, 0, 0.06699336, 0, 1, 0, -0.3968667, 0, -0.028355658, 64.15301, -0.8269611, 7.871895)
+use_collision = true
+radius = 21.531738
+height = 3.6074219
+material = ExtResource("1_gqyk6")
+
 [node name="CSGCylinder3D37" type="CSGCylinder3D" parent="CSGCylinder3D/CSGCombiner3D3/CSGCylinder3D5" unique_id=758397086]
 transform = Transform3D(-0.37170953, 0, 0.036810342, 0, 1, 0, -0.21806325, 0, -0.0627467, 141.31792, -3.8146973e-06, 41.806374)
 use_collision = true
