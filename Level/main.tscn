@@ -22,7 +22,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y023f"]
-size = Vector3(54.389343, 1, 58.619507)
+size = Vector3(263.85718, 1, 256.12402)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_76v5r"]
 
@@ -282,55 +282,16 @@ transform = Transform3D(0.5869684, 2.9802322e-08, 0.51470315, 0.51470315, 0, -0.
 [node name="Thruster" parent="ShipV2Broken" index="3" unique_id=455365]
 transform = Transform3D(0.6962706, -0.3530701, 0, -0.15998843, -0.3155046, -0.6959252, 0.31474146, 0.6206847, -0.3537505, -3.3788872, -0.079191804, 15.567408)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=898660617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.276379, -3.9353094, -41.79436)
-script = ExtResource("7_76v5r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=829230299]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.058136, 0, -1.9065552)
-shape = SubResource("BoxShape3D_y023f")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1469162717]
-transform = Transform3D(26.263426, 0, 0, 0, 1.744726, 0, 0, 0, 26.657785, 2.872181, -0.97784424, -3.6018677)
-mesh = SubResource("PlaneMesh_76v5r")
-surface_material_override/0 = SubResource("StandardMaterial3D_76v5r")
-
-[node name="Area3D4" type="Area3D" parent="." unique_id=1803787834]
-transform = Transform3D(1.0977387, 0, 0, 0, 1, 0, 0, 0, 1.174063, -65.98623, -3.9353018, -20.410557)
-script = ExtResource("7_76v5r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4" unique_id=1065329378]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.058136, 0, -1.9065552)
-shape = SubResource("BoxShape3D_y023f")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D4" unique_id=169890558]
-transform = Transform3D(26.263426, 0, 0, 0, 1.744726, 0, 0, 0, 26.657785, 2.872181, -0.97784424, -3.6018677)
-mesh = SubResource("PlaneMesh_76v5r")
-surface_material_override/0 = SubResource("StandardMaterial3D_76v5r")
-
-[node name="Area3D3" type="Area3D" parent="." unique_id=1442805254]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.81863, -3.9353094, 53.13061)
-script = ExtResource("7_76v5r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3" unique_id=1779008464]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.058136, 0, -1.9065552)
-shape = SubResource("BoxShape3D_y023f")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D3" unique_id=388080428]
-transform = Transform3D(26.263426, 0, 0, 0, 1.744726, 0, 0, 0, 26.657785, 2.872181, -0.97784424, -3.6018677)
-mesh = SubResource("PlaneMesh_76v5r")
-surface_material_override/0 = SubResource("StandardMaterial3D_76v5r")
-
 [node name="Area3D2" type="Area3D" parent="." unique_id=1878584424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.166992, -3.9353094, 42.309277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1338778, 0)
 script = ExtResource("7_76v5r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=81570010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.058136, 0, -1.9065552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6998978, -1.2616572, -2.6448517)
 shape = SubResource("BoxShape3D_y023f")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2" unique_id=533750350]
-transform = Transform3D(26.263426, 0, 0, 0, 1.744726, 0, 0, 0, 26.657785, 2.872181, -0.97784424, -3.6018677)
+transform = Transform3D(135.90567, 0, 0, 0, 1, 0, 0, 0, 116.747246, 2.872181, -0.97784424, -3.6018677)
 mesh = SubResource("PlaneMesh_76v5r")
 surface_material_override/0 = SubResource("StandardMaterial3D_76v5r")
 
