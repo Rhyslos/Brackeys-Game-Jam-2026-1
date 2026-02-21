@@ -15,6 +15,7 @@ albedo_color = Color(0.019294403, 0.3823565, 1.0588765e-06, 1)
 
 [resource]
 script = ExtResource("1_5iouu")
+OreName = "Uranium"
 OreMaterial = SubResource("StandardMaterial3D_4451s")
 MaxHealth = 6000.0
 OreMesh = ExtResource("1_4451s")

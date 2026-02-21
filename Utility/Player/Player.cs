@@ -20,19 +20,22 @@ public partial class Player : RigidBody3D
     [Export] public float HeadBobAmplitude = 0.08f;
     [Export] public float LandingDipAmount = 0.2f;
     [Export] public float LandingRecoverySpeed = 8.0f;
+    [Export] public float LandingDipDelay = 0.03f;
 
     // camera variables
     [ExportCategory("Camera")]
     [Export(PropertyHint.Range, "60, 120")] public float BaseFov = 75.0f;
     [Export] public float MouseSensitivity = 0.003f;
     [Export] public Node3D CameraNode;
+    [Export] public Camera3D DebugCamera;
+    [Export] public Vector3 DebugCameraOffset = new Vector3(5.0f, 1.0f, 0.0f);
 
     // system variables
     [ExportCategory("Physics")]
     [Export] public RayCast3D FloorCheck;
     
     [ExportCategory("Systems")]
-    [Export] public RayCast3D InteractionRaycast;
+    [Export] public Area3D InteractionArea;
     [Export] public InventoryManager InventoryUI;
     [Export] public float MaxOxygen = 120f;
     [Export] public ProgressBar OxygenBar;
@@ -50,6 +53,7 @@ public partial class Player : RigidBody3D
     private float _coyoteTimer;
     private float _currentOxygen;
     private bool _isInventoryOpen;
+    private bool _isDebugCamActive;
 
     // initialization functions
     public override void _Ready()
@@ -90,11 +94,33 @@ public partial class Player : RigidBody3D
             OxygenBar.MaxValue = MaxOxygen;
             OxygenBar.Value = _currentOxygen;
         }
+
+        if (DebugCamera != null)
+        {
+            DebugCamera.TopLevel = true;
+        }
     }
 
     // input functions
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo && keyEvent.Keycode == Key.P)
+        {
+            _isDebugCamActive = !_isDebugCamActive;
+            
+            if (DebugCamera != null && CameraNode is Camera3D mainCam)
+            {
+                if (_isDebugCamActive)
+                {
+                    DebugCamera.MakeCurrent();
+                }
+                else
+                {
+                    mainCam.MakeCurrent();
+                }
+            }
+        }
+
         if (_isInventoryOpen) return;
 
         if (@event is InputEventMouseMotion mouseMotion)
@@ -126,6 +152,12 @@ public partial class Player : RigidBody3D
     public override void _Process(double delta)
     {
         HandleOxygen(delta);
+
+        if (DebugCamera != null)
+        {
+            DebugCamera.GlobalPosition = GlobalPosition + DebugCameraOffset;
+            DebugCamera.GlobalRotation = new Vector3(0, Mathf.DegToRad(90), 0);
+        }
 
         if (Input.IsActionJustPressed("Inventory"))
         {
@@ -230,7 +262,7 @@ public partial class Player : RigidBody3D
 
         if (!_wasOnFloor && isOnFloor && !_isJumping)
         {
-            _landingTimer = 0.2f;
+            _landingTimer = LandingDipDelay;
         }
 
         if (_landingTimer > 0f)
@@ -298,12 +330,17 @@ public partial class Player : RigidBody3D
     // interaction functions
     private void TryInteract()
     {
-        if (InteractionRaycast != null && InteractionRaycast.IsColliding())
+        if (InteractionArea != null)
         {
-            Node collider = (Node)InteractionRaycast.GetCollider();
-            if (collider is IInteractable interactable)
+            Godot.Collections.Array<Node3D> overlappingBodies = InteractionArea.GetOverlappingBodies();
+            
+            foreach (Node3D body in overlappingBodies)
             {
-                interactable.Interact(this);
+                if (body is IInteractable interactable)
+                {
+                    interactable.Interact(this);
+                    break; 
+                }
             }
         }
     }

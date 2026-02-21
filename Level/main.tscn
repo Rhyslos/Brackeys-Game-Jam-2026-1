@@ -2,7 +2,6 @@
 
 [ext_resource type="Material" uid="uid://dhshd8c7kk14x" path="res://Assets/Shader/M_PrototypingGrid.tres" id="1_gqyk6"]
 [ext_resource type="PackedScene" uid="uid://djldhtmhx1cy0" path="res://Utility/Player/Player.tscn" id="2_r23e8"]
-[ext_resource type="Resource" uid="uid://brdh4iuptfvym" path="res://Resources/Crafting/Hematite.tres" id="3_y023f"]
 [ext_resource type="PackedScene" uid="uid://b6bc8eaf43l2n" path="res://Utility/Resources/OreDeposit.tscn" id="4_q3hbn"]
 [ext_resource type="PackedScene" uid="uid://dsh1ue7uklsas" path="res://Assets/Mesh/ShipV2Broken.tscn" id="6_76v5r"]
 [ext_resource type="Resource" uid="uid://c507hcthjf81m" path="res://Resources/Crafting/Uranium.tres" id="6_y023f"]
@@ -31,7 +30,7 @@ size = Vector3(263.85718, 1, 256.12402)
 albedo_color = Color(0, 0.67, 0.18983331, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c8g86"]
-points = PackedVector3Array(-9.755909, 4.8507586, -14.585768, 15.240185, 3.6149395, -3.428458, -14.355037, 5.3939977, 14.587568, -0.9141837, -9.433309, 0.59803295, 7.123987, 5.3404303, 18.530146, 9.601401, 4.8854012, -15.836755, -9.320831, -5.5218406, -5.5591745, 6.9595313, -4.413875, -11.2215395, 3.048816, -7.8627543, 7.4494596, 9.911205, -5.592522, 3.4657452, -4.446364, 0.7327038, -17.957905, -13.075046, 5.9125433, -7.4589696, -4.876366, -6.6791573, 8.512932, 14.758093, 5.4024377, 3.5373452, -13.6119585, 0.7089498, -9.159816, 4.481507, 3.3501425, 19.117105, -3.2126744, -5.5799336, -11.341301, -4.983785, 5.896098, -16.081533, 5.9699273, 5.918369, 16.795115, 14.820509, 0.7526664, -5.2202625, 4.122783, -8.320092, -4.9942293, -9.289809, -4.952213, 4.50642, 8.841389, 0.713083, -15.515309, 13.900281, 0.6883557, 3.466907, -13.155, 2.8530917, 13.959091, -4.5671277, 4.962165, -18.995111, 11.418027, -4.401719, -3.3207138, 11.558342, 5.7850456, -2.7946975, -14.503191, 5.4666123, -8.771144, -5.400985, -8.330081, 3.9659348, 6.368629, -8.326976, 0.59916115, -11.365392, 5.9271164, 13.34331)
+points = PackedVector3Array(15.728565, 3.3490286, -5.3135214, 14.895168, 0.7535114, -5.116211, 15.344843, 3.3633595, -6.3228416, 15.254908, 4.9079304, -6.3266363, 15.458761, 4.9302235, -5.1693335, 15.395805, 4.9939175, -3.8488703, 15.23992, 3.8681316, 3.212574, 14.454487, 1.2582836, 3.1101246, 13.11146, -2.58563, -4.2131357, 9.343189, 0.76306534, -15.008303, 10.710199, 3.3681364, -14.98933, 12.7367325, -2.1270351, 3.1670399, 11.795414, 4.8808613, -13.611951, 13.048506, 5.5958223, -5.461505, 13.941858, 4.9143, -9.058629, 11.930315, 5.587861, -7.9468594, 12.784697, 6.0416784, 1.7175655, 15.024075, 5.4254417, 2.0514774, 14.964119, 5.4349957, 3.1480675, 7.0168743, 5.423849, 19.198528, 6.998888, 3.8633547, 18.492764, 10.098642, -6.0983357, -2.2627964, 6.4382935, -6.0298653, -8.91444, 7.754339, -2.6334, -13.471557, 8.6387005, 0.70255566, -15.729246, 9.92177, 3.310812, -15.9645, 9.81085, -5.740059, 3.451624, 10.713198, 4.8792686, -14.928619, 10.140612, 5.560791, -11.6502285, 10.926043, 6.1181107, 0.57544136, 11.318758, 6.135626, 2.3588257, 12.203117, 6.0416784, 3.6375504, 5.901682, 6.0416784, 16.155392, 5.4999733, 5.433404, 19.426193, 5.577917, 3.861762, 18.709045, -0.9663439, -5.763944, 10.846977, -0.10896492, -7.9741144, 8.429922, 2.9758015, -7.9725223, 7.500284, 4.138958, -5.7145815, 9.340586, 9.526056, -5.7002506, 3.8310661, 7.07683, -8.176342, -0.016490936, 7.09182, -8.185896, -0.86644363, 4.6845627, -8.212966, -5.3135214, 6.054571, -6.1349597, -9.328033, -3.9311972, -2.1365895, -15.945528, -4.389865, 1.2503214, -18.438473, -3.1967287, 1.2550983, -18.218395, -3.1367722, 3.8649473, -19.15562, 8.959467, 3.2980728, -16.594378, 9.858816, 4.8569756, -15.862051, 6.7890396, -7.9613757, 3.7779446, 6.893963, -7.9550066, 3.1746292, 8.419859, 5.552829, -13.638512, 2.8978577, 5.94773, -13.828234, 1.2940197, 6.121295, -12.3180485, -0.25885677, 6.388809, -0.2251854, 5.760784, 6.135626, 11.9283905, 4.061014, 6.135626, 14.781807, 2.694004, 6.0416784, 16.117447, -3.8082857, 5.433404, 18.223358, -3.565462, 3.861762, 18.033638, -1.7637663, 6.0416784, 15.806305, -5.786853, -5.8324146, 9.211575, -0.6785526, -7.980484, 8.346443, -14.108826, 3.7678137, 15.009472, -0.41174603, -8.424747, 7.7962513, 2.804924, -8.416785, 6.5934143, 6.261421, -8.62379, -0.09617424, 6.069561, -8.408824, 3.3871174, 3.8002033, -8.647675, -4.421829, 3.8151932, -8.200227, -5.6701984, -2.9958744, -5.7480206, -11.244224, -5.9277506, 1.2487297, -17.357058, -3.9581776, -5.708212, -10.644703, -5.178294, -2.1413665, -15.012097, -6.2695036, 3.861762, -18.184246, -4.5307627, 3.861762, -19.337753, -3.0108633, 5.4222574, -18.920366, 7.3526306, 4.954108, -16.636116, 8.734631, 4.882453, -16.29841, 6.1924706, 5.651554, -14.249416, -2.5701828, 6.038493, -16.158016, 0.18782043, 6.0448627, -14.359455, -1.0892553, 6.135626, -13.596773, -3.4965115, 6.1324425, -14.404987, -6.7311687, 6.134033, -11.858922, -9.752981, 6.135626, -8.876496, -11.060034, 6.135626, -7.3511333, -11.036051, 6.135626, -5.0479116, -10.610359, 6.135626, 3.4895668, -11.116993, 6.07034, 11.438908, -2.920929, 6.135626, 13.882526, -11.146971, 5.976392, 13.172966, -14.62745, 5.3442326, 15.165043, -4.174021, 6.0416784, 14.918404, -3.4275618, -8.017108, 7.4130135, -8.928577, -5.767129, 4.404026, -5.834818, -7.980484, 4.297783, -3.9281988, -8.0187, 7.0677204, -3.2956572, -8.464556, 6.8059044, -11.749535, -2.1556973, 4.4229984, -14.066856, 1.2423601, -8.235236, 0.30773354, -9.878555, 2.1425438, -1.7547731, -8.413601, -5.5373936, -1.562912, -7.9597836, -6.819912, -2.7830286, -7.967745, -6.4177027, -8.35899, 1.2471371, -14.977947, -8.832647, 3.861762, -15.725451, -11.7645235, -2.1445513, -8.504642, -6.3324575, -7.97093, -2.9040546, -9.069475, -5.7113967, -5.5829268, -13.311403, 1.2471371, -10.105893, -6.2545147, 5.420665, -17.922428, -4.428837, 5.4302187, -18.939337, -5.5050573, 6.038493, -15.254942, -9.564117, 6.040086, -11.350468, -11.875443, 6.0416784, -9.092779, -12.645885, 6.0416784, -7.1348505, -12.319122, 5.976392, 11.53377, -14.783338, 5.423849, -8.364247, -14.897255, 3.861762, -8.534997, -5.963725, -7.977299, 3.7399998, -9.432213, -5.7193584, -4.4749517, -6.5692863, -7.975707, -2.088251, -5.2742243, -8.42634, 3.9373112, -12.301135, -2.152513, -7.009634, -13.913967, 1.2455444, -9.347006, -12.232185, -2.1493282, -7.912709, -5.5770054, -8.421562, -1.8188477, -4.9834347, -8.418378, -2.4866676, -3.2986546, -8.416785, -4.163808, -13.958935, 3.8633547, -10.678853, -13.809043, 5.423849, -10.572609, -9.321293, -5.759167, -5.082061, -14.414604, 5.433404, -9.582261, -14.660426, 3.8633547, -9.790955)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c17l7"]
 points = PackedVector3Array(15.728565, 3.3490286, -5.3135214, 14.895168, 0.7535114, -5.116211, 15.344843, 3.3633595, -6.3228416, 15.254908, 4.9079304, -6.3266363, 15.458761, 4.9302235, -5.1693335, 15.395805, 4.9939175, -3.8488703, 15.23992, 3.8681316, 3.212574, 14.454487, 1.2582836, 3.1101246, 13.11146, -2.58563, -4.2131357, 9.343189, 0.76306534, -15.008303, 10.710199, 3.3681364, -14.98933, 12.7367325, -2.1270351, 3.1670399, 11.795414, 4.8808613, -13.611951, 13.048506, 5.5958223, -5.461505, 13.941858, 4.9143, -9.058629, 11.930315, 5.587861, -7.9468594, 12.784697, 6.0416784, 1.7175655, 15.024075, 5.4254417, 2.0514774, 14.964119, 5.4349957, 3.1480675, 7.0168743, 5.423849, 19.198528, 6.998888, 3.8633547, 18.492764, 10.098642, -6.0983357, -2.2627964, 6.4382935, -6.0298653, -8.91444, 7.754339, -2.6334, -13.471557, 8.6387005, 0.70255566, -15.729246, 9.92177, 3.310812, -15.9645, 9.81085, -5.740059, 3.451624, 10.713198, 4.8792686, -14.928619, 10.140612, 5.560791, -11.6502285, 10.926043, 6.1181107, 0.57544136, 11.318758, 6.135626, 2.3588257, 12.203117, 6.0416784, 3.6375504, 5.901682, 6.0416784, 16.155392, 5.4999733, 5.433404, 19.426193, 5.577917, 3.861762, 18.709045, -0.9663439, -5.763944, 10.846977, -0.10896492, -7.9741144, 8.429922, 2.9758015, -7.9725223, 7.500284, 4.138958, -5.7145815, 9.340586, 9.526056, -5.7002506, 3.8310661, 7.07683, -8.176342, -0.016490936, 7.09182, -8.185896, -0.86644363, 4.6845627, -8.212966, -5.3135214, 6.054571, -6.1349597, -9.328033, -3.9311972, -2.1365895, -15.945528, -4.389865, 1.2503214, -18.438473, -3.1967287, 1.2550983, -18.218395, -3.1367722, 3.8649473, -19.15562, 8.959467, 3.2980728, -16.594378, 9.858816, 4.8569756, -15.862051, 6.7890396, -7.9613757, 3.7779446, 6.893963, -7.9550066, 3.1746292, 8.419859, 5.552829, -13.638512, 2.8978577, 5.94773, -13.828234, 1.2940197, 6.121295, -12.3180485, -0.25885677, 6.388809, -0.2251854, 5.760784, 6.135626, 11.9283905, 4.061014, 6.135626, 14.781807, 2.694004, 6.0416784, 16.117447, -3.8082857, 5.433404, 18.223358, -3.565462, 3.861762, 18.033638, -1.7637663, 6.0416784, 15.806305, -5.786853, -5.8324146, 9.211575, -0.6785526, -7.980484, 8.346443, -14.108826, 3.7678137, 15.009472, -0.41174603, -8.424747, 7.7962513, 2.804924, -8.416785, 6.5934143, 6.261421, -8.62379, -0.09617424, 6.069561, -8.408824, 3.3871174, 3.8002033, -8.647675, -4.421829, 3.8151932, -8.200227, -5.6701984, -2.9958744, -5.7480206, -11.244224, -5.9277506, 1.2487297, -17.357058, -3.9581776, -5.708212, -10.644703, -5.178294, -2.1413665, -15.012097, -6.2695036, 3.861762, -18.184246, -4.5307627, 3.861762, -19.337753, -3.0108633, 5.4222574, -18.920366, 7.3526306, 4.954108, -16.636116, 8.734631, 4.882453, -16.29841, 6.1924706, 5.651554, -14.249416, -2.5701828, 6.038493, -16.158016, 0.18782043, 6.0448627, -14.359455, -1.0892553, 6.135626, -13.596773, -3.4965115, 6.1324425, -14.404987, -6.7311687, 6.134033, -11.858922, -9.752981, 6.135626, -8.876496, -11.060034, 6.135626, -7.3511333, -11.036051, 6.135626, -5.0479116, -10.610359, 6.135626, 3.4895668, -11.116993, 6.07034, 11.438908, -2.920929, 6.135626, 13.882526, -11.146971, 5.976392, 13.172966, -14.62745, 5.3442326, 15.165043, -4.174021, 6.0416784, 14.918404, -3.4275618, -8.017108, 7.4130135, -8.928577, -5.767129, 4.404026, -5.834818, -7.980484, 4.297783, -3.9281988, -8.0187, 7.0677204, -3.2956572, -8.464556, 6.8059044, -11.749535, -2.1556973, 4.4229984, -14.066856, 1.2423601, -8.235236, 0.30773354, -9.878555, 2.1425438, -1.7547731, -8.413601, -5.5373936, -1.562912, -7.9597836, -6.819912, -2.7830286, -7.967745, -6.4177027, -8.35899, 1.2471371, -14.977947, -8.832647, 3.861762, -15.725451, -11.7645235, -2.1445513, -8.504642, -6.3324575, -7.97093, -2.9040546, -9.069475, -5.7113967, -5.5829268, -13.311403, 1.2471371, -10.105893, -6.2545147, 5.420665, -17.922428, -4.428837, 5.4302187, -18.939337, -5.5050573, 6.038493, -15.254942, -9.564117, 6.040086, -11.350468, -11.875443, 6.0416784, -9.092779, -12.645885, 6.0416784, -7.1348505, -12.319122, 5.976392, 11.53377, -14.783338, 5.423849, -8.364247, -14.897255, 3.861762, -8.534997, -5.963725, -7.977299, 3.7399998, -9.432213, -5.7193584, -4.4749517, -6.5692863, -7.975707, -2.088251, -5.2742243, -8.42634, 3.9373112, -12.301135, -2.152513, -7.009634, -13.913967, 1.2455444, -9.347006, -12.232185, -2.1493282, -7.912709, -5.5770054, -8.421562, -1.8188477, -4.9834347, -8.418378, -2.4866676, -3.2986546, -8.416785, -4.163808, -13.958935, 3.8633547, -10.678853, -13.809043, 5.423849, -10.572609, -9.321293, -5.759167, -5.082061, -14.414604, 5.433404, -9.582261, -14.660426, 3.8633547, -9.790955)
@@ -53,17 +52,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=845561229 instance=ExtResource("2_r23e8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1, -0.1)
-
-[node name="Node3D" parent="." unique_id=1142073388 instance=ExtResource("4_q3hbn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1510911, 0, -7.7375336)
-
-[node name="OreDeposit" parent="." unique_id=1972586395 instance=ExtResource("4_q3hbn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3701982, -1.4305115e-06, -7.1988173)
-DepositData = ExtResource("3_y023f")
-
-[node name="OreDeposit2" parent="." unique_id=1050127018 instance=ExtResource("4_q3hbn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.645017, -1.4305115e-06, -6.3578086)
-DepositData = ExtResource("6_y023f")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=54886992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.741455, 0)
@@ -283,6 +271,21 @@ use_collision = true
 radius = 21.531738
 material = ExtResource("1_gqyk6")
 
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=577007413]
+transform = Transform3D(1.0372702, 0, 0, 0, 1, 0, 0, 0, 1.0372702, 0, 7.5319824, 0)
+use_collision = true
+radius = 123.83496
+height = 26.029785
+material = ExtResource("1_gqyk6")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCylinder3D2" unique_id=1320206565]
+transform = Transform3D(0.964069, 0, 0, 0, 1, 0, 0, 0, 0.964069, 0, 0.61743164, 0)
+operation = 2
+use_collision = true
+radius = 123.83496
+height = 56.686768
+material = ExtResource("1_gqyk6")
+
 [node name="ShipV2Broken" parent="." unique_id=1552884750 instance=ExtResource("6_76v5r")]
 transform = Transform3D(0.4033057, 0, 0.9150653, 0, 1, 0, -0.9150653, 0, 0.4033057, -6.6769986, -0.16463518, 12.553725)
 
@@ -295,97 +298,118 @@ transform = Transform3D(0.5869684, 2.9802322e-08, 0.51470315, 0.51470315, 0, -0.
 [node name="Thruster" parent="ShipV2Broken" index="3" unique_id=455365]
 transform = Transform3D(0.6962706, -0.3530701, 0, -0.15998843, -0.3155046, -0.6959252, 0.31474146, 0.6206847, -0.3537505, -3.3788872, -0.079191804, 15.567408)
 
-[node name="Area3D2" type="Area3D" parent="." unique_id=1878584424]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1338778, 0)
+[node name="DeathZone" type="Area3D" parent="." unique_id=1878584424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.263895, 0)
 script = ExtResource("7_76v5r")
+MinWaterLevel = -5.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=81570010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6998978, -3.6572604, -2.6448517)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=81570010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6998978, -2.1500936, -2.6448517)
 shape = SubResource("BoxShape3D_y023f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D2" unique_id=533750350]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DeathZone" unique_id=533750350]
 transform = Transform3D(135.90567, 0, 0, 0, 1, 0, 0, 0, 116.747246, 2.872181, -0.97784424, -3.6018677)
 mesh = SubResource("PlaneMesh_76v5r")
 surface_material_override/0 = SubResource("StandardMaterial3D_76v5r")
 
-[node name="FloatingIsland" type="MeshInstance3D" parent="." unique_id=310662500]
-transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 40.41417, -4.6418653, 36.524033)
+[node name="Acid Islands" type="Node3D" parent="." unique_id=115802164]
+
+[node name="FloatingIsland" type="MeshInstance3D" parent="Acid Islands" unique_id=310662500]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 40.41417, -5.708907, 36.524033)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland" unique_id=1307800356]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland" unique_id=2076605484]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland/StaticBody3D" unique_id=1885868998]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland/StaticBody3D" unique_id=354651293]
 shape = SubResource("ConvexPolygonShape3D_c8g86")
 
-[node name="FloatingIsland2" type="MeshInstance3D" parent="." unique_id=1913346484]
-transform = Transform3D(0.10013845, 0, -0.07481504, 0, 0.125, 0, 0.07481504, 0, 0.10013845, 36.41018, -2.2399986, 28.180435)
+[node name="FloatingIsland2" type="MeshInstance3D" parent="Acid Islands" unique_id=1913346484]
+transform = Transform3D(0.10013845, 0, -0.07481504, 0, 0.125, 0, 0.07481504, 0, 0.10013845, 36.41018, -3.3070405, 28.180435)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland2" unique_id=1573281170]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland2" unique_id=1573281170]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland2/StaticBody3D" unique_id=2124323271]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland2/StaticBody3D" unique_id=2124323271]
 shape = SubResource("ConvexPolygonShape3D_c17l7")
 
-[node name="FloatingIsland5" type="MeshInstance3D" parent="." unique_id=1167002831]
-transform = Transform3D(0.051288143, 0, 0.113993555, 0, 0.125, 0, -0.113993555, 0, 0.051288143, 33.27599, -1.3702977, 24.647968)
+[node name="FloatingIsland5" type="MeshInstance3D" parent="Acid Islands" unique_id=1167002831]
+transform = Transform3D(0.051288143, 0.016331634, 0.112817585, 0, 0.12371049, -0.01790851, -0.11399356, 0.0073479516, 0.05075905, 33.094727, -2.0026095, 24.566412)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland5" unique_id=406167940]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland5" unique_id=406167940]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland5/StaticBody3D" unique_id=1378105189]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland5/StaticBody3D" unique_id=1378105189]
 shape = SubResource("ConvexPolygonShape3D_c17l7")
 
-[node name="FloatingIsland3" type="MeshInstance3D" parent="." unique_id=2078407646]
-transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 39.549152, -5.8711176, 50.817318)
+[node name="FloatingIsland3" type="MeshInstance3D" parent="Acid Islands" unique_id=2078407646]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 39.549152, -6.9381595, 50.817318)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland3" unique_id=796315130]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland3" unique_id=796315130]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland3/StaticBody3D" unique_id=1016412327]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland3/StaticBody3D" unique_id=1016412327]
 shape = SubResource("ConvexPolygonShape3D_wt2cp")
 
-[node name="FloatingIsland6" type="MeshInstance3D" parent="." unique_id=548406888]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 40.899124, -3.7631998, 60.16654)
+[node name="FloatingIsland6" type="MeshInstance3D" parent="Acid Islands" unique_id=548406888]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 40.899124, -4.8302417, 60.16654)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland6" unique_id=406360548]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland6" unique_id=406360548]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland6/StaticBody3D" unique_id=984755086]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland6/StaticBody3D" unique_id=984755086]
 shape = SubResource("ConvexPolygonShape3D_wt2cp")
 
-[node name="FloatingIsland7" type="MeshInstance3D" parent="." unique_id=1061852956]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 36.711533, -2.5964036, 60.16654)
+[node name="FloatingIsland7" type="MeshInstance3D" parent="Acid Islands" unique_id=1061852956]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 36.711533, -3.6634455, 60.16654)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland7" unique_id=2134610950]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland7" unique_id=2134610950]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland7/StaticBody3D" unique_id=2119020918]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland7/StaticBody3D" unique_id=2119020918]
 shape = SubResource("ConvexPolygonShape3D_wt2cp")
 
-[node name="FloatingIsland8" type="MeshInstance3D" parent="." unique_id=2061251515]
-transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 32.74394, -1.7101017, 56.584667)
+[node name="FloatingIsland8" type="MeshInstance3D" parent="Acid Islands" unique_id=2061251515]
+transform = Transform3D(0.135, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 33.070652, -2.777143, 57.786522)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland8" unique_id=150069745]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland8" unique_id=150069745]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland8/StaticBody3D" unique_id=871329284]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland8/StaticBody3D" unique_id=871329284]
 shape = SubResource("ConvexPolygonShape3D_wt2cp")
 
-[node name="FloatingIsland4" type="MeshInstance3D" parent="." unique_id=670482381]
-transform = Transform3D(-0.09600904, -0.033444464, 0.14853866, 0.011229077, 0.1735703, 0.046338513, -0.1518426, 0.033982597, -0.09049316, 51.289955, -2.3310947, 32.09751)
+[node name="FloatingIsland10" type="MeshInstance3D" parent="Acid Islands" unique_id=464095092]
+transform = Transform3D(0.036236092, 0, -0.13004594, 0, 0.135, 0, 0.13004594, 0, 0.036236092, 30.891937, -1.6167756, 53.416286)
 mesh = ExtResource("8_c8g86")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatingIsland4" unique_id=356266105]
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland10" unique_id=460273272]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatingIsland4/StaticBody3D" unique_id=345777878]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland10/StaticBody3D" unique_id=528441639]
+shape = SubResource("ConvexPolygonShape3D_wt2cp")
+
+[node name="FloatingIsland4" type="MeshInstance3D" parent="Acid Islands" unique_id=670482381]
+transform = Transform3D(-0.09600904, -0.033444464, 0.14853866, 0.011229077, 0.1735703, 0.046338513, -0.1518426, 0.033982597, -0.09049316, 49.498005, -4.4466624, 32.890686)
+mesh = ExtResource("8_c8g86")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland4" unique_id=356266105]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland4/StaticBody3D" unique_id=345777878]
 shape = SubResource("ConvexPolygonShape3D_yo3sj")
 
-[node name="OreDeposit3" parent="." unique_id=1893078120 instance=ExtResource("4_q3hbn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2651, -2.364931, 38.22703)
+[node name="FloatingIsland9" type="MeshInstance3D" parent="Acid Islands" unique_id=1874703422]
+transform = Transform3D(0.16771111, -0.0606099, 0.024483211, 0.06415947, 0.16553241, -0.029708449, -0.012511876, 0.036407053, 0.1758351, 55.08174, -2.3889914, 29.937094)
+mesh = ExtResource("8_c8g86")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Acid Islands/FloatingIsland9" unique_id=2083423349]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Acid Islands/FloatingIsland9/StaticBody3D" unique_id=979620121]
+shape = SubResource("ConvexPolygonShape3D_yo3sj")
+
+[node name="OreDeposit3" parent="Acid Islands" unique_id=1893078120 instance=ExtResource("4_q3hbn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2651, -3.431973, 38.22703)
 DepositData = ExtResource("6_y023f")
 
-[node name="OreDeposit4" parent="." unique_id=1678509401 instance=ExtResource("4_q3hbn")]
-transform = Transform3D(0.7102345, 0, -0.7039651, 0, 1, 0, 0.7039651, 0, 0.7102345, 39.320713, -2.3768597, 34.05333)
+[node name="OreDeposit4" parent="Acid Islands" unique_id=1678509401 instance=ExtResource("4_q3hbn")]
+transform = Transform3D(0.7102345, 0, -0.7039651, 0, 1, 0, 0.7039651, 0, 0.7102345, 39.320713, -3.4439015, 34.05333)
 DepositData = ExtResource("6_y023f")
 
 [editable path="ShipV2Broken"]

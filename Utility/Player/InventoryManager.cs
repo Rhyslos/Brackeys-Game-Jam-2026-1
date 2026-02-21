@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System;
 
 public partial class InventoryManager : Control
 {
@@ -10,19 +11,35 @@ public partial class InventoryManager : Control
     [Export] public Button CraftOxygenTankButton;
     [Export] public Button ConsumeOxygenButton; 
 
-    // references
+    // references variables
     [Export] public Player PlayerNode;
 
     // data variables
-    private Dictionary<string, int> _inventory = new Dictionary<string, int>();
+    private Dictionary<string, int> _inventory = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
 
     // initialization functions
     public override void _Ready()
     {
-        CraftRepairPartButton.Pressed += CraftRepairPart;
-        CraftFuelRodButton.Pressed += CraftFuelRod;
-        CraftOxygenTankButton.Pressed += CraftOxygenTank;
-        ConsumeOxygenButton.Pressed += ConsumeOxygen;
+        if (CraftRepairPartButton != null)
+        {
+            CraftRepairPartButton.Pressed += CraftRepairPart;
+        }
+        
+        if (CraftFuelRodButton != null)
+        {
+            CraftFuelRodButton.Pressed += CraftFuelRod;
+        }
+        
+        if (CraftOxygenTankButton != null)
+        {
+            CraftOxygenTankButton.Pressed += CraftOxygenTank;
+        }
+        
+        if (ConsumeOxygenButton != null)
+        {
+            ConsumeOxygenButton.Pressed += ConsumeOxygen;
+        }
+
         UpdateUI();
     }
 
@@ -30,9 +47,13 @@ public partial class InventoryManager : Control
     public void AddItem(string itemName, int amount)
     {
         if (_inventory.ContainsKey(itemName))
+        {
             _inventory[itemName] += amount;
+        }
         else
+        {
             _inventory[itemName] = amount;
+        }
         
         UpdateUI();
         CheckWinCondition();
@@ -44,7 +65,9 @@ public partial class InventoryManager : Control
         {
             _inventory[itemName] -= amount;
             if (_inventory[itemName] <= 0)
+            {
                 _inventory.Remove(itemName);
+            }
         }
     }
 
@@ -111,23 +134,40 @@ public partial class InventoryManager : Control
     // ui functions
     private void UpdateUI()
     {
-        foreach (Node child in ItemsColumn.GetChildren())
+        if (ItemsColumn != null)
         {
-            child.QueueFree();
+            foreach (Node child in ItemsColumn.GetChildren())
+            {
+                child.QueueFree();
+            }
+
+            foreach (var kvp in _inventory)
+            {
+                Label itemLabel = new Label();
+                itemLabel.Text = $"{kvp.Key}: {kvp.Value}";
+                ItemsColumn.AddChild(itemLabel);
+            }
         }
 
-        foreach (var kvp in _inventory)
+        if (CraftRepairPartButton != null)
         {
-            Label itemLabel = new Label();
-            itemLabel.Text = $"{kvp.Key}: {kvp.Value}";
-            ItemsColumn.AddChild(itemLabel);
+            CraftRepairPartButton.Disabled = !HasItems("Copper", 1, "Titanium", 1);
         }
-
-        CraftRepairPartButton.Disabled = !HasItems("Copper", 1, "Titanium", 1);
-        CraftFuelRodButton.Disabled = !HasItems("Uranium", 1, "Ice", 1);
-        CraftOxygenTankButton.Disabled = !HasItems("Ice", 1, "Hematite", 1, "Titanium", 1);
         
-        ConsumeOxygenButton.Disabled = !(_inventory.ContainsKey("Oxygen Tank") && _inventory["Oxygen Tank"] > 0);
+        if (CraftFuelRodButton != null)
+        {
+            CraftFuelRodButton.Disabled = !HasItems("Uranium", 1, "Ice", 1);
+        }
+        
+        if (CraftOxygenTankButton != null)
+        {
+            CraftOxygenTankButton.Disabled = !HasItems("Ice", 1, "Hematite", 1, "Titanium", 1);
+        }
+        
+        if (ConsumeOxygenButton != null)
+        {
+            ConsumeOxygenButton.Disabled = !(_inventory.ContainsKey("Oxygen Tank") && _inventory["Oxygen Tank"] > 0);
+        }
     }
 
     // game state functions

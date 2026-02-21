@@ -12,7 +12,10 @@ radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "FloorCheck", "InteractionRaycast", "InventoryUI", "OxygenBar") groups=["player"]]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1jbdv"]
+radius = 0.20214844
+
+[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "DebugCamera", "FloorCheck", "InteractionArea", "InventoryUI", "OxygenBar") groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -27,8 +30,9 @@ HeadBobFrequency = 1.4
 HeadBobAmplitude = 0.04
 LandingDipAmount = 0.5
 CameraNode = NodePath("Camera")
+DebugCamera = NodePath("DebugCam")
 FloorCheck = NodePath("FloorCheck")
-InteractionRaycast = NodePath("Camera/InteractionRayCast")
+InteractionArea = NodePath("Camera/Area3D")
 InventoryUI = NodePath("HUD/InventoryLayer/InventoryManager")
 OxygenBar = NodePath("HUD/OxygenBar")
 
@@ -39,6 +43,9 @@ shape = SubResource("CapsuleShape3D_25vog")
 transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_i1gnq")
 
+[node name="DebugCam" type="Camera3D" parent="." unique_id=44520162]
+transform = Transform3D(-2.9802319e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802319e-08, 2.8483315, 1.2385015, -0.81122315)
+
 [node name="Camera" type="Camera3D" parent="." unique_id=1135726242]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 current = true
@@ -47,8 +54,12 @@ fov = 60.0
 [node name="Scanner" parent="Camera" unique_id=895938317 instance=ExtResource("2_qfbe8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33297044, -0.42873365, -0.46349955)
 
-[node name="InteractionRayCast" type="RayCast3D" parent="Camera" unique_id=1564270865]
-transform = Transform3D(1.9106855e-15, 7.9336175e-08, 1, 1, -7.9336175e-08, 0, 4.371139e-08, 1.815, -4.371139e-08, 0, 0.01707542, -0.49453476)
+[node name="Area3D" type="Area3D" parent="Camera" unique_id=1826448567]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0.05)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/Area3D" unique_id=100034497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, -1.4870535, 6.500121e-08)
+shape = SubResource("CapsuleShape3D_1jbdv")
 
 [node name="FloorCheck" type="RayCast3D" parent="." unique_id=1617688472]
 transform = Transform3D(1, 0, 0, 0, 0.305, 0, 0, 0, 1, 0, -0.81336933, 0)
