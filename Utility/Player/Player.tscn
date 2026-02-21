@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
 [ext_resource type="PackedScene" uid="uid://crj3cegm4ee7p" path="res://Utility/Player/Scanner.tscn" id="2_qfbe8"]
+[ext_resource type="Script" uid="uid://bswpl6lwyaid3" path="res://Utility/Player/InventoryManager.cs" id="3_1jbdv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qfbe8"]
 friction = 0.0
@@ -11,7 +12,7 @@ radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "FloorCheck") groups=["player"]]
+[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "FloorCheck", "InteractionRaycast", "InventoryUI", "OxygenBar") groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -27,6 +28,9 @@ HeadBobAmplitude = 0.04
 LandingDipAmount = 0.5
 CameraNode = NodePath("Camera")
 FloorCheck = NodePath("FloorCheck")
+InteractionRaycast = NodePath("Camera/InteractionRayCast")
+InventoryUI = NodePath("HUD/InventoryLayer/InventoryManager")
+OxygenBar = NodePath("HUD/OxygenBar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=75992566]
 shape = SubResource("CapsuleShape3D_25vog")
@@ -43,6 +47,90 @@ fov = 60.0
 [node name="Scanner" parent="Camera" unique_id=895938317 instance=ExtResource("2_qfbe8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.33297044, -0.42873365, -0.46349955)
 
+[node name="InteractionRayCast" type="RayCast3D" parent="Camera" unique_id=1564270865]
+transform = Transform3D(1.9106855e-15, 7.9336175e-08, 1, 1, -7.9336175e-08, 0, 4.371139e-08, 1.815, -4.371139e-08, 0, 0.01707542, -0.49453476)
+
 [node name="FloorCheck" type="RayCast3D" parent="." unique_id=1617688472]
 transform = Transform3D(1, 0, 0, 0, 0.305, 0, 0, 0, 1, 0, -0.81336933, 0)
 target_position = Vector3(0, -1.1, 0)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1611032554]
+
+[node name="OxygenBar" type="ProgressBar" parent="HUD" unique_id=2098750539]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -448.0
+offset_right = 448.0
+offset_bottom = 27.0
+grow_horizontal = 2
+value = 50.0
+show_percentage = false
+
+[node name="InventoryLayer" type="CanvasLayer" parent="HUD" unique_id=2012319433]
+
+[node name="InventoryManager" type="Control" parent="HUD/InventoryLayer" unique_id=1997696017 node_paths=PackedStringArray("ItemsColumn", "CraftRepairPartButton", "CraftFuelRodButton", "CraftOxygenTankButton", "ConsumeOxygenButton", "PlayerNode")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -268.0
+offset_right = 448.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_1jbdv")
+ItemsColumn = NodePath("SplitLayout/ItemsColumn")
+CraftRepairPartButton = NodePath("SplitLayout/CraftingColumn/BtnCraftRepair")
+CraftFuelRodButton = NodePath("SplitLayout/CraftingColumn/BtnCraftFuel")
+CraftOxygenTankButton = NodePath("SplitLayout/CraftingColumn/BtnCraftOxygen")
+ConsumeOxygenButton = NodePath("SplitLayout/CraftingColumn/BtnConsumeOxygen")
+PlayerNode = NodePath("../../..")
+
+[node name="Panel" type="Panel" parent="HUD/InventoryLayer/InventoryManager" unique_id=185509458]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplitLayout" type="HBoxContainer" parent="HUD/InventoryLayer/InventoryManager" unique_id=242888092]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemsColumn" type="VBoxContainer" parent="HUD/InventoryLayer/InventoryManager/SplitLayout" unique_id=310315672]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CraftingColumn" type="VBoxContainer" parent="HUD/InventoryLayer/InventoryManager/SplitLayout" unique_id=124648188]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BtnCraftRepair" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=655420575]
+layout_mode = 2
+text = "Craft Repair Part"
+
+[node name="BtnCraftFuel" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=1154870218]
+layout_mode = 2
+text = "Craft Fuel Rod
+"
+
+[node name="BtnCraftOxygen" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=2121988051]
+layout_mode = 2
+text = "Craft Oxygen Tank"
+
+[node name="Spacer" type="Control" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=1222176395]
+layout_mode = 2
+
+[node name="BtnConsumeOxygen" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=855385799]
+layout_mode = 2
+text = "Refill Oxygen (+30s)"

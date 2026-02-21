@@ -1,12 +1,13 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class DroppedResource : RigidBody3D
+public partial class DroppedResource : RigidBody3D, IInteractable
 {
+    // data variables
     public OreData Data;
-    
     private static HashSet<string> _activeAudioTypes = new HashSet<string>();
 
+    // initialization functions
     public override void _Ready()
     {
         if (Data != null)
@@ -16,6 +17,7 @@ public partial class DroppedResource : RigidBody3D
         }
     }
 
+    // audio functions
     private void HandleAmbientAudio()
     {
         if (Data.AmbientSound == null || _activeAudioTypes.Contains(Data.OreName)) 
@@ -31,6 +33,7 @@ public partial class DroppedResource : RigidBody3D
         TreeExiting += () => _activeAudioTypes.Remove(Data.OreName);
     }
 
+    // visual functions
     private void ApplyOreData()
     {
         var meshInstance = GetNodeOrNull<MeshInstance3D>("MeshInstance3D");
@@ -47,5 +50,20 @@ public partial class DroppedResource : RigidBody3D
             colShape.Shape = meshInstance.Mesh.CreateConvexShape();
 
         Name = $"Dropped_{Data.OreName}";
+    }
+
+    // interaction functions
+    public string GetInteractionText()
+    {
+        return Data != null ? $"Pickup {Data.OreName}" : "Pickup";
+    }
+
+    public void Interact(Node interactor)
+    {
+        if (interactor.HasMethod("AddInventoryItem"))
+        {
+            interactor.Call("AddInventoryItem", Data.OreName, 1);
+            QueueFree();
+        }
     }
 }

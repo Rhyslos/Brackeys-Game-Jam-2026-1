@@ -2,7 +2,7 @@ using Godot;
 
 public partial class Player : RigidBody3D
 {
-    // exported variables
+    // movement variables
     [ExportCategory("Movement")]
     [Export] public float Speed = 5.0f;
     [Export] public float SprintSpeed = 10.0f;
@@ -11,6 +11,7 @@ public partial class Player : RigidBody3D
     [Export] public float AirControl = 2.5f;
     [Export] public float CoyoteTime = 0.15f;
 
+    // visual variables
     [ExportCategory("Visuals")]
     [Export] public Node3D GunNode;
     [Export] public float WeaponBobFrequency = 2.0f;
@@ -20,13 +21,21 @@ public partial class Player : RigidBody3D
     [Export] public float LandingDipAmount = 0.2f;
     [Export] public float LandingRecoverySpeed = 8.0f;
 
+    // camera variables
     [ExportCategory("Camera")]
     [Export(PropertyHint.Range, "60, 120")] public float BaseFov = 75.0f;
     [Export] public float MouseSensitivity = 0.003f;
     [Export] public Node3D CameraNode;
 
+    // system variables
     [ExportCategory("Physics")]
     [Export] public RayCast3D FloorCheck;
+    
+    [ExportCategory("Systems")]
+    [Export] public RayCast3D InteractionRaycast;
+    [Export] public InventoryManager InventoryUI;
+    [Export] public float MaxOxygen = 120f;
+    [Export] public ProgressBar OxygenBar;
 
     // state variables
     private float _targetYRotation;
@@ -39,6 +48,8 @@ public partial class Player : RigidBody3D
     private bool _wasOnFloor;
     private float _landingTimer = -1f;
     private float _coyoteTimer;
+    private float _currentOxygen;
+    private bool _isInventoryOpen;
 
     // initialization functions
     public override void _Ready()
@@ -51,6 +62,7 @@ public partial class Player : RigidBody3D
         CanSleep = false;
 
         _targetYRotation = Rotation.Y;
+        _currentOxygen = MaxOxygen;
 
         if (CameraNode == null)
         {
@@ -67,11 +79,24 @@ public partial class Player : RigidBody3D
         {
             _gunDefaultPosition = GunNode.Position;
         }
+
+        if (InventoryUI != null)
+        {
+            InventoryUI.Visible = false;
+        }
+
+        if (OxygenBar != null)
+        {
+            OxygenBar.MaxValue = MaxOxygen;
+            OxygenBar.Value = _currentOxygen;
+        }
     }
 
     // input functions
     public override void _UnhandledInput(InputEvent @event)
     {
+        if (_isInventoryOpen) return;
+
         if (@event is InputEventMouseMotion mouseMotion)
         {
             _targetYRotation -= mouseMotion.Relative.X * MouseSensitivity;
@@ -90,11 +115,25 @@ public partial class Player : RigidBody3D
         {
             _jumpRequested = true;
         }
+
+        if (@event.IsActionPressed("Interact"))
+        {
+            TryInteract();
+        }
     }
 
-    // visual functions
+    // loop functions
     public override void _Process(double delta)
     {
+        HandleOxygen(delta);
+
+        if (Input.IsActionJustPressed("Inventory"))
+        {
+            ToggleInventory();
+        }
+
+        if (_isInventoryOpen) return;
+
         Vector3 velocity = LinearVelocity;
         Vector2 horizontalVelocity = new Vector2(velocity.X, velocity.Z);
         
@@ -144,7 +183,6 @@ public partial class Player : RigidBody3D
         }
     }
 
-    // physics functions
     public override void _PhysicsProcess(double delta)
     {
         if (Input.IsActionPressed("Pause"))
@@ -155,6 +193,12 @@ public partial class Player : RigidBody3D
 
     public override void _IntegrateForces(PhysicsDirectBodyState3D state)
     {
+        if (_isInventoryOpen)
+        {
+            state.LinearVelocity = new Vector3(0, state.LinearVelocity.Y, 0);
+            return;
+        }
+
         float delta = state.Step;
         
         Transform3D newTransform = state.Transform;
@@ -186,7 +230,7 @@ public partial class Player : RigidBody3D
 
         if (!_wasOnFloor && isOnFloor && !_isJumping)
         {
-            _landingTimer = 0.03f;
+            _landingTimer = 0.2f;
         }
 
         if (_landingTimer > 0f)
@@ -251,7 +295,64 @@ public partial class Player : RigidBody3D
         state.LinearVelocity = currentVelocity;
     }
 
-    // helper functions
+    // interaction functions
+    private void TryInteract()
+    {
+        if (InteractionRaycast != null && InteractionRaycast.IsColliding())
+        {
+            Node collider = (Node)InteractionRaycast.GetCollider();
+            if (collider is IInteractable interactable)
+            {
+                interactable.Interact(this);
+            }
+        }
+    }
+
+    // ui functions
+    public void AddInventoryItem(string itemName, int amount)
+    {
+        if (InventoryUI != null)
+        {
+            InventoryUI.AddItem(itemName, amount);
+            GD.Print($"Added {amount} {itemName} to inventory.");
+        }
+    }
+
+    private void ToggleInventory()
+    {
+        _isInventoryOpen = !_isInventoryOpen;
+        
+        if (InventoryUI != null)
+        {
+            InventoryUI.Visible = _isInventoryOpen;
+        }
+
+        Input.MouseMode = _isInventoryOpen ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+    }
+
+    // state functions
+    private void HandleOxygen(double delta)
+    {
+        _currentOxygen -= (float)delta;
+        
+        if (OxygenBar != null)
+        {
+            OxygenBar.Value = _currentOxygen;
+        }
+
+        if (_currentOxygen <= 0)
+        {
+            GD.Print("OXYGEN DEPLETED - GAME OVER");
+            QuitGame();
+        }
+    }
+
+    public void AddOxygen(float amount)
+    {
+        _currentOxygen = Mathf.Min(_currentOxygen + amount, MaxOxygen);
+        GD.Print($"Oxygen restored. Current: {_currentOxygen}");
+    }
+
     public void QuitGame()
     {
         GetTree().Quit();
