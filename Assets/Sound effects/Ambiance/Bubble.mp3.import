@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6ej40fj7uy5y"
+path="res://.godot/imported/Bubble.mp3-568449e203e655b87720b5af9a07e782.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound effects/Ambiance/Bubble.mp3"
+dest_files=["res://.godot/imported/Bubble.mp3-568449e203e655b87720b5af9a07e782.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="OreData" format=3 uid="uid://22v0upjoq7fv"]
 
-[ext_resource type="ArrayMesh" uid="uid://cklitf2mscnrs" path="res://Assets/Mesh/Titanium_Mesh.tres" id="1_8fjue"]
+[ext_resource type="ArrayMesh" uid="uid://cklitf2mscnrs" path="res://Assets/Extracted Mesh/Titanium_Mesh.tres" id="1_8fjue"]
 [ext_resource type="Script" uid="uid://2cq1k1lwafoi" path="res://Scripts/Item Scripts/OreData.cs" id="1_ixrr3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fjue"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b87lh5nu3m7ir"
+path="res://.godot/imported/SpaceThump.mp3-68c8f98148ced789c5d23ad6288155f4.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound effects/Ambiance/SpaceThump.mp3"
+dest_files=["res://.godot/imported/SpaceThump.mp3-68c8f98148ced789c5d23ad6288155f4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

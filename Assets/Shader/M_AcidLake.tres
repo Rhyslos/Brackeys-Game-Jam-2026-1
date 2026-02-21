@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dgwjxcxay0uox"]
+
+[ext_resource type="Shader" uid="uid://dfdamk6tdxf16" path="res://Assets/Shader/AcidLake.gdshader" id="1_xtht2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xtht2"]
+seed = 418
+frequency = 0.0163
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iwvn2"]
+noise = SubResource("FastNoiseLite_xtht2")
+seamless = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4ju7g"]
+seed = 69
+frequency = 0.0071
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5m0jy"]
+noise = SubResource("FastNoiseLite_4ju7g")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_xtht2")
+shader_parameter/albedo = Color(0.2, 0.8, 0.2, 0.85)
+shader_parameter/edge_color = Color(0.6, 1, 0.4, 1)
+shader_parameter/edge_scale = 1.5
+shader_parameter/noise_tex_1 = SubResource("NoiseTexture2D_iwvn2")
+shader_parameter/noise_tex_2 = SubResource("NoiseTexture2D_5m0jy")
+shader_parameter/scroll_speed_1 = Vector2(0.02, 0.03)
+shader_parameter/scroll_speed_2 = Vector2(-0.03, 0.02)
+shader_parameter/uv_scale = 0.1
+shader_parameter/emission_color = Color(0.2, 0.9, 0.2, 1)
+shader_parameter/emission_energy = 1.5
+shader_parameter/pulse_speed = 2.0
+shader_parameter/pulse_strength = 0.4
+shader_parameter/roughness_val = 0.1

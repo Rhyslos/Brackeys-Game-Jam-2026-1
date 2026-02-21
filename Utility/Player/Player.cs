@@ -54,10 +54,12 @@ public partial class Player : RigidBody3D
     private float _currentOxygen;
     private bool _isInventoryOpen;
     private bool _isDebugCamActive;
+    private float _shakeIntensity;
 
     // initialization functions
     public override void _Ready()
     {
+        AddToGroup("player");
         Input.MouseMode = Input.MouseModeEnum.Captured;
 
         AxisLockAngularX = true;
@@ -194,6 +196,15 @@ public partial class Player : RigidBody3D
         else
         {
             _bobTime = 0;
+        }
+
+        if (_shakeIntensity > 0 && isOnFloor)
+        {
+            targetCamPos += new Vector3(
+                (float)GD.RandRange(-_shakeIntensity, _shakeIntensity),
+                (float)GD.RandRange(-_shakeIntensity, _shakeIntensity),
+                0
+            );
         }
 
         _currentLandingDip = Mathf.Lerp(_currentLandingDip, 0f, (float)delta * LandingRecoverySpeed);
@@ -365,6 +376,12 @@ public partial class Player : RigidBody3D
         }
 
         Input.MouseMode = _isInventoryOpen ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+    }
+
+    // visual functions
+    public void SetCameraShake(float intensity)
+    {
+        _shakeIntensity = intensity;
     }
 
     // state functions
