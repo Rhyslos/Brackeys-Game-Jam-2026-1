@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cyaubgarffk8t"]
 
 [ext_resource type="Material" uid="uid://dhshd8c7kk14x" path="res://Assets/Shader/M_PrototypingGrid.tres" id="1_gqyk6"]
-[ext_resource type="Shader" uid="uid://0lwhdynrkgkq" path="res://Assets/Shader/grid_world.gdshader" id="2_eo7o3"]
 [ext_resource type="PackedScene" uid="uid://djldhtmhx1cy0" path="res://Utility/Player/Player.tscn" id="2_r23e8"]
+[ext_resource type="Resource" uid="uid://brdh4iuptfvym" path="res://Resources/Crafting/Hematite.tres" id="3_y023f"]
 [ext_resource type="PackedScene" uid="uid://b6bc8eaf43l2n" path="res://Utility/Resources/OreDeposit.tscn" id="4_q3hbn"]
-[ext_resource type="Resource" uid="uid://22v0upjoq7fv" path="res://Resources/Crafting/Titanium.tres" id="5_oycwn"]
+[ext_resource type="PackedScene" uid="uid://dsh1ue7uklsas" path="res://Assets/Mesh/ShipV2Broken.tscn" id="6_76v5r"]
 [ext_resource type="Resource" uid="uid://c507hcthjf81m" path="res://Resources/Crafting/Uranium.tres" id="6_y023f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r23e8"]
@@ -20,18 +20,6 @@ sky = SubResource("Sky_eo7o3")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3hbn"]
-render_priority = 0
-shader = ExtResource("2_eo7o3")
-shader_parameter/background_color = Color(0.1, 0.1, 0.1, 1)
-shader_parameter/main_grid_color = Color(0.5, 0.5, 0.5, 1)
-shader_parameter/grid_scale = 1.0
-shader_parameter/main_line_thickness = 0.02
-shader_parameter/subdivisions = 4
-shader_parameter/sub_grid_color = Color(0.3, 0.3, 0.3, 1)
-shader_parameter/sub_line_thickness = 0.01
-shader_parameter/line_sharpness = 0.0
-
 [node name="Main" type="Node3D" unique_id=1740505170]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=227092264]
@@ -39,15 +27,7 @@ environment = SubResource("Environment_q3hbn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1124997335]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 11, 0)
-visible = false
 shadow_enabled = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1246536595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049999997, 0)
-material_override = ExtResource("1_gqyk6")
-use_collision = true
-size = Vector3(100, 0.1, 100)
-material = SubResource("ShaderMaterial_q3hbn")
 
 [node name="Player" parent="." unique_id=845561229 instance=ExtResource("2_r23e8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 1, -0.1)
@@ -57,8 +37,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1510911, 0, -7.7375336)
 
 [node name="OreDeposit" parent="." unique_id=1972586395 instance=ExtResource("4_q3hbn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3701982, -1.4305115e-06, -7.1988173)
-DepositData = ExtResource("5_oycwn")
+DepositData = ExtResource("3_y023f")
 
 [node name="OreDeposit2" parent="." unique_id=1050127018 instance=ExtResource("4_q3hbn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.645017, -1.4305115e-06, -6.3578086)
 DepositData = ExtResource("6_y023f")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=54886992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+radius = 123.83496
+material = ExtResource("1_gqyk6")
+
+[node name="ShipV2Broken" parent="." unique_id=1552884750 instance=ExtResource("6_76v5r")]
+transform = Transform3D(0.4033057, 0, 0.9150653, 0, 1, 0, -0.9150653, 0, 0.4033057, -6.6769986, -0.16463518, 12.553725)
+
+[node name="Ship" parent="ShipV2Broken" index="0" unique_id=537813573]
+transform = Transform3D(0.7672336, -0.008883219, -0.14396156, -0.14423537, -0.047252815, -0.7657771, 0, 0.7791915, -0.04808056, -0.01140213, 1.262269, -4.6659374)
+
+[node name="Right Wing" parent="ShipV2Broken" index="1" unique_id=1872790506]
+transform = Transform3D(0.5869684, 2.9802322e-08, 0.51470315, 0.51470315, 0, -0.5869684, -1.4901161e-08, 0.7806735, 0, 6.9957995, 1.1336751, 3.6955054)
+
+[node name="Thruster" parent="ShipV2Broken" index="3" unique_id=455365]
+transform = Transform3D(0.6962706, -0.3530701, 0, -0.15998843, -0.3155046, -0.6959252, 0.31474146, 0.6206847, -0.3537505, -3.3788872, -0.079191804, 15.567408)
+
+[editable path="ShipV2Broken"]

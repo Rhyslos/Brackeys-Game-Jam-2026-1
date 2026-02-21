@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OreData" format=3 uid="uid://brdh4iuptfvym"]
+
+[ext_resource type="ArrayMesh" uid="uid://dljf146cnggpv" path="res://Assets/Mesh/Hematite.tres" id="1_i53iu"]
+[ext_resource type="Script" uid="uid://2cq1k1lwafoi" path="res://Scripts/Item Scripts/OreData.cs" id="1_p3j7p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr45h"]
+albedo_color = Color(0.17827646, 0.19470485, 0.30148947, 1)
+metallic = 0.59
+metallic_specular = 0.91
+roughness = 0.45
+
+[resource]
+script = ExtResource("1_p3j7p")
+OreName = "Hematite"
+OreMaterial = SubResource("StandardMaterial3D_wr45h")
+MaxHealth = 4250.0
+OreMesh = ExtResource("1_i53iu")
+metadata/_custom_type_script = "uid://2cq1k1lwafoi"

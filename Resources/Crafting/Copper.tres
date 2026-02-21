@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OreData" format=3 uid="uid://428fet40qxwa"]
+
+[ext_resource type="ArrayMesh" uid="uid://ba84ckdhtqllt" path="res://Assets/Mesh/Copper.tres" id="1_bp0ld"]
+[ext_resource type="Script" uid="uid://2cq1k1lwafoi" path="res://Scripts/Item Scripts/OreData.cs" id="1_sfp75"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_attmq"]
+albedo_color = Color(0.56596047, 0.3743896, 0.0965806, 1)
+metallic = 0.71
+metallic_specular = 0.6
+roughness = 0.35
+
+[resource]
+script = ExtResource("1_sfp75")
+OreName = "Copper"
+OreMaterial = SubResource("StandardMaterial3D_attmq")
+MaxHealth = 2900.0
+OreMesh = ExtResource("1_bp0ld")
+metadata/_custom_type_script = "uid://2cq1k1lwafoi"
