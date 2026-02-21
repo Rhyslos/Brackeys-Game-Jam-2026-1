@@ -3,17 +3,27 @@
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
 [ext_resource type="PackedScene" uid="uid://crj3cegm4ee7p" path="res://Utility/Player/Scanner.tscn" id="2_qfbe8"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qfbe8"]
+friction = 0.0
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25vog"]
 radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_i1gnq"]
 
-[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("CameraNode", "FloorCheck") groups=["player"]]
+[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "FloorCheck") groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_qfbe8")
 can_sleep = false
 script = ExtResource("1_i1gnq")
+AirControl = 1.15
+GunNode = NodePath("Camera/Scanner")
+WeaponBobFrequency = 1.4
+HeadBobFrequency = 1.4
+HeadBobAmplitude = 0.04
+LandingDipAmount = 0.5
 CameraNode = NodePath("Camera")
 FloorCheck = NodePath("FloorCheck")
 
