@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="OreData" format=3 uid="uid://c507hcthjf81m"]
 
 [ext_resource type="Script" uid="uid://2cq1k1lwafoi" path="res://Scripts/Item Scripts/OreData.cs" id="1_5iouu"]
-[ext_resource type="ArrayMesh" uid="uid://c7vkr7w4btw43" path="res://Assets/Extracted Mesh/Uranium_Mesh.tres" id="1_4451s"]
+[ext_resource type="ArrayMesh" uid="uid://c7vkr7w4btw43" path="res://Assets/Extracted Mesh/Ores/Uranium_Mesh.tres" id="1_4451s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pl1y1"]
 albedo_color = Color(1, 1, 1, 0)

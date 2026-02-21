@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhd6h0s86klac"]
 
 [ext_resource type="Script" uid="uid://dm0tmwc4j73ku" path="res://Utility/Resources/DroppedResource.cs" id="1_efusk"]
-[ext_resource type="ArrayMesh" uid="uid://dn2yn3oiu3dm7" path="res://Assets/Extracted Mesh/Ice_Mesh.tres" id="2_joy1b"]
+[ext_resource type="ArrayMesh" uid="uid://dn2yn3oiu3dm7" path="res://Assets/Extracted Mesh/Ores/Ice_Mesh.tres" id="2_joy1b"]
 
 [node name="DroppedResource" type="RigidBody3D" unique_id=248944743]
 gravity_scale = 0.6
