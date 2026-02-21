@@ -18,6 +18,7 @@ axis_lock_angular_z = true
 physics_material_override = SubResource("PhysicsMaterial_qfbe8")
 can_sleep = false
 script = ExtResource("1_i1gnq")
+SprintSpeed = 8.5
 AirControl = 1.15
 GunNode = NodePath("Camera/Scanner")
 WeaponBobFrequency = 1.4
