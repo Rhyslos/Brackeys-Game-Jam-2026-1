@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
 [ext_resource type="PackedScene" uid="uid://crj3cegm4ee7p" path="res://Utility/Player/Scanner.tscn" id="2_qfbe8"]
 [ext_resource type="Script" uid="uid://bswpl6lwyaid3" path="res://Utility/Player/InventoryManager.cs" id="3_1jbdv"]
+[ext_resource type="Script" uid="uid://lbqveeewfhb5" path="res://Utility/Player/UIButtonSound.cs" id="4_ndcul"]
+[ext_resource type="AudioStream" uid="uid://caooaeb0fp18t" path="res://Assets/Sound effects/Interaction/ButtonPress.mp3" id="5_k5uwn"]
+[ext_resource type="AudioStream" uid="uid://dewnsrl8vmhg8" path="res://Assets/Sound effects/Ambiance/BreathingWhenLowOxygen.mp3" id="6_k5uwn"]
+[ext_resource type="AudioStream" uid="uid://ca3i5e0fsai0v" path="res://Assets/Sound effects/Interaction/LaserMining.mp3" id="7_0c18b"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qfbe8"]
 friction = 0.0
@@ -15,7 +19,16 @@ radius = 0.3
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1jbdv"]
 radius = 0.20214844
 
-[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "DebugCamera", "FloorCheck", "InteractionArea", "InventoryUI", "OxygenBar") groups=["player"]]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c18b"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.32, 0.32, 1)
+emission_energy_multiplier = 5.21
+
+[sub_resource type="BoxMesh" id="BoxMesh_0c18b"]
+material = SubResource("StandardMaterial3D_0c18b")
+
+[node name="Player" type="RigidBody3D" unique_id=824593189 node_paths=PackedStringArray("GunNode", "CameraNode", "DebugCamera", "FloorCheck", "InteractionArea", "InventoryUI", "OxygenBar", "LowOxygenPlayer", "MiningRaycast", "LaserMesh", "ScannerAudioPlayer") groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -35,6 +48,11 @@ FloorCheck = NodePath("FloorCheck")
 InteractionArea = NodePath("Camera/Area3D")
 InventoryUI = NodePath("HUD/InventoryLayer/InventoryManager")
 OxygenBar = NodePath("HUD/OxygenBar")
+LowOxygenPlayer = NodePath("LowOxygen")
+MiningRaycast = NodePath("Camera/Scanner/RayCast3D")
+LaserMesh = NodePath("MeshInstance3D2")
+ScannerAudioPlayer = NodePath("AudioStreamPlayer3D")
+MiningDamagePerSecond = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=75992566]
 shape = SubResource("CapsuleShape3D_25vog")
@@ -77,6 +95,24 @@ offset_bottom = 27.0
 grow_horizontal = 2
 value = 50.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="HUD/OxygenBar" unique_id=636171145]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 19
+text = "Oxygen Supply"
 
 [node name="InventoryLayer" type="CanvasLayer" parent="HUD" unique_id=2012319433]
 
@@ -126,22 +162,74 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Spacer3" type="Control" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=1125229967]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="BtnCraftRepair" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=655420575]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Craft Repair Part"
+
+[node name="Node" type="Node" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn/BtnCraftRepair" unique_id=1310427234]
+script = ExtResource("4_ndcul")
+ClickSound = ExtResource("5_k5uwn")
 
 [node name="BtnCraftFuel" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=1154870218]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Craft Fuel Rod
 "
 
+[node name="Node2" type="Node" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn/BtnCraftFuel" unique_id=979665852]
+script = ExtResource("4_ndcul")
+ClickSound = ExtResource("5_k5uwn")
+
 [node name="BtnCraftOxygen" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=2121988051]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Craft Oxygen Tank"
+
+[node name="Node3" type="Node" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn/BtnCraftOxygen" unique_id=2011195649]
+script = ExtResource("4_ndcul")
+ClickSound = ExtResource("5_k5uwn")
 
 [node name="Spacer" type="Control" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=1222176395]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="BtnConsumeOxygen" type="Button" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=855385799]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Refill Oxygen (+30s)"
+
+[node name="Node4" type="Node" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn/BtnConsumeOxygen" unique_id=269485899]
+script = ExtResource("4_ndcul")
+ClickSound = ExtResource("5_k5uwn")
+
+[node name="Spacer2" type="Control" parent="HUD/InventoryLayer/InventoryManager/SplitLayout/CraftingColumn" unique_id=1572938839]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HUD/InventoryLayer/InventoryManager" unique_id=1337050476]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Crafting Menu"
+
+[node name="LowOxygen" type="AudioStreamPlayer" parent="." unique_id=1665762437]
+stream = ExtResource("6_k5uwn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1590921566]
+stream = ExtResource("7_0c18b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1437799055]
+transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0.33297044, 0.46297848, -0.98806953)
+mesh = SubResource("BoxMesh_0c18b")
+
+[editable path="Camera/Scanner"]

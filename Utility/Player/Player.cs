@@ -39,6 +39,13 @@ public partial class Player : RigidBody3D
     [Export] public InventoryManager InventoryUI;
     [Export] public float MaxOxygen = 120f;
     [Export] public ProgressBar OxygenBar;
+    [Export] public AudioStreamPlayer LowOxygenPlayer;
+
+    [ExportCategory("Mining Tool")]
+    [Export] public RayCast3D MiningRaycast;
+    [Export] public MeshInstance3D LaserMesh;
+    [Export] public AudioStreamPlayer3D ScannerAudioPlayer;
+    [Export] public float MiningDamagePerSecond = 35.0f;
 
     // state variables
     private float _targetYRotation;
@@ -101,6 +108,17 @@ public partial class Player : RigidBody3D
         {
             DebugCamera.TopLevel = true;
         }
+
+        if (LaserMesh != null)
+        {
+            LaserMesh.Visible = false;
+            LaserMesh.TopLevel = true; 
+        }
+
+        if (MiningRaycast != null)
+        {
+            MiningRaycast.AddException(this);
+        }
     }
 
     // input functions
@@ -154,6 +172,7 @@ public partial class Player : RigidBody3D
     public override void _Process(double delta)
     {
         HandleOxygen(delta);
+        HandleMining(delta);
 
         if (DebugCamera != null)
         {
@@ -356,6 +375,36 @@ public partial class Player : RigidBody3D
         }
     }
 
+    private void HandleMining(double delta)
+    {
+        if (Input.IsActionPressed("Fire") && !_isInventoryOpen) 
+        {
+            if (MiningRaycast != null && MiningRaycast.IsColliding())
+            {
+                Node3D collider = (Node3D)MiningRaycast.GetCollider();
+                if (collider is OreDeposit deposit)
+                {
+                    deposit.Mine(MiningDamagePerSecond * (float)delta);
+                    
+                    Vector3 hitPoint = MiningRaycast.GetCollisionPoint();
+                    UpdateLaserVisuals(true, hitPoint);
+                    
+                    if (ScannerAudioPlayer != null && !ScannerAudioPlayer.Playing)
+                    {
+                        ScannerAudioPlayer.Play();
+                    }
+                    return;
+                }
+            }
+        }
+
+        UpdateLaserVisuals(false, Vector3.Zero);
+        if (ScannerAudioPlayer != null && ScannerAudioPlayer.Playing)
+        {
+            ScannerAudioPlayer.Stop();
+        }
+    }
+
     // ui functions
     public void AddInventoryItem(string itemName, int amount)
     {
@@ -384,6 +433,31 @@ public partial class Player : RigidBody3D
         _shakeIntensity = intensity;
     }
 
+    private void UpdateLaserVisuals(bool isMining, Vector3 hitPoint)
+    {
+        if (LaserMesh == null || MiningRaycast == null) return;
+
+        if (!isMining)
+        {
+            LaserMesh.Visible = false;
+            return;
+        }
+
+        LaserMesh.Visible = true;
+        Vector3 startPoint = MiningRaycast.GlobalPosition;
+        float distance = startPoint.DistanceTo(hitPoint);
+        
+        LaserMesh.GlobalPosition = startPoint.Lerp(hitPoint, 0.5f);
+        
+        if (!Mathf.IsEqualApprox(startPoint.Y, hitPoint.Y) || !Mathf.IsEqualApprox(startPoint.X, hitPoint.X))
+        {
+            LaserMesh.LookAt(hitPoint, Vector3.Up);
+        }
+
+        float pulse = Mathf.Sin(Time.GetTicksMsec() / 50.0f) * 0.02f + 0.04f;
+        LaserMesh.Scale = new Vector3(pulse, pulse, distance);
+    }
+
     // state functions
     private void HandleOxygen(double delta)
     {
@@ -392,6 +466,21 @@ public partial class Player : RigidBody3D
         if (OxygenBar != null)
         {
             OxygenBar.Value = _currentOxygen;
+        }
+
+        if (_currentOxygen <= 20.0f)
+        {
+            if (LowOxygenPlayer != null && !LowOxygenPlayer.Playing)
+            {
+                LowOxygenPlayer.Play();
+            }
+        }
+        else
+        {
+            if (LowOxygenPlayer != null && LowOxygenPlayer.Playing)
+            {
+                LowOxygenPlayer.Stop();
+            }
         }
 
         if (_currentOxygen <= 0)

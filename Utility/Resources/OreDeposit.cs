@@ -156,7 +156,6 @@ public partial class OreDeposit : StaticBody3D
 
             drop.GlobalPosition = spawnPoint.GlobalPosition;
             Vector3 popForce = spawnPoint.GlobalBasis.Y * dropForce;
-            GD.Print(dropForce);
             drop.ApplyCentralImpulse(popForce);
 
             spawnPoint.QueueFree();
