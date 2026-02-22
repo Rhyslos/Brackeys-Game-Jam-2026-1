@@ -209,7 +209,7 @@ public partial class DeathZone : Area3D
         {
             if (body is Player player)
             {
-                player.QuitGame();
+                player.TriggerGameOver(false, "You dissolved in the acid lake.");
             }
             TriggerGameOver();
         }
@@ -224,7 +224,7 @@ public partial class DeathZone : Area3D
             {
                 if (body is Player player)
                 {
-                    player.QuitGame();
+                    player.TriggerGameOver(false, "You dissolved in the acid lake.");
                 }
                 TriggerGameOver();
                 break;

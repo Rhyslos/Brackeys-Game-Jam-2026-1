@@ -56,7 +56,6 @@ public partial class InventoryManager : Control
         }
         
         UpdateUI();
-        CheckWinCondition();
     }
 
     public void RemoveItem(string itemName, int amount)
@@ -71,14 +70,14 @@ public partial class InventoryManager : Control
         }
     }
 
-    private bool HasItems(string item1, int amount1, string item2, int amount2)
+    public bool HasItems(string item1, int amount1, string item2, int amount2)
     {
         int count1 = _inventory.ContainsKey(item1) ? _inventory[item1] : 0;
         int count2 = _inventory.ContainsKey(item2) ? _inventory[item2] : 0;
         return count1 >= amount1 && count2 >= amount2;
     }
 
-    private bool HasItems(string item1, int amount1, string item2, int amount2, string item3, int amount3)
+    public bool HasItems(string item1, int amount1, string item2, int amount2, string item3, int amount3)
     {
         int count1 = _inventory.ContainsKey(item1) ? _inventory[item1] : 0;
         int count2 = _inventory.ContainsKey(item2) ? _inventory[item2] : 0;
@@ -131,6 +130,22 @@ public partial class InventoryManager : Control
         }
     }
 
+    // game state functions
+    public void TryEscape()
+    {
+        if (HasItems("Fuel Rod", 3, "Repair Part", 3))
+        {
+            if (PlayerNode != null)
+            {
+                PlayerNode.TriggerGameOver(true, "You successfully repaired the ship and escaped!");
+            }
+        }
+        else
+        {
+            GD.Print("Not enough parts! You need 3 Fuel Rods and 3 Repair Parts.");
+        }
+    }
+
     // ui functions
     private void UpdateUI()
     {
@@ -167,18 +182,6 @@ public partial class InventoryManager : Control
         if (ConsumeOxygenButton != null)
         {
             ConsumeOxygenButton.Disabled = !(_inventory.ContainsKey("Oxygen Tank") && _inventory["Oxygen Tank"] > 0);
-        }
-    }
-
-    // game state functions
-    private void CheckWinCondition()
-    {
-        int repairParts = _inventory.ContainsKey("Repair Part") ? _inventory["Repair Part"] : 0;
-        int fuelRods = _inventory.ContainsKey("Fuel Rod") ? _inventory["Fuel Rod"] : 0;
-
-        if (repairParts >= 3 && fuelRods >= 3)
-        {
-            GD.Print("YOU WIN!");
         }
     }
 }

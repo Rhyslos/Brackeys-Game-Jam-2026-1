@@ -40,7 +40,9 @@ public partial class Player : RigidBody3D
     [Export] public float MaxOxygen = 120f;
     [Export] public ProgressBar OxygenBar;
     [Export] public AudioStreamPlayer LowOxygenPlayer;
+    [Export] public PackedScene GameOverScene;
 
+    // mining tool variables
     [ExportCategory("Mining Tool")]
     [Export] public RayCast3D MiningRaycast;
     [Export] public MeshInstance3D LaserMesh;
@@ -62,6 +64,7 @@ public partial class Player : RigidBody3D
     private bool _isInventoryOpen;
     private bool _isDebugCamActive;
     private float _shakeIntensity;
+    private bool _isGameOver;
 
     // initialization functions
     public override void _Ready()
@@ -76,6 +79,7 @@ public partial class Player : RigidBody3D
 
         _targetYRotation = Rotation.Y;
         _currentOxygen = MaxOxygen;
+        _isGameOver = false;
 
         if (CameraNode == null)
         {
@@ -245,11 +249,12 @@ public partial class Player : RigidBody3D
         }
     }
 
+    // physics functions
     public override void _PhysicsProcess(double delta)
     {
         if (Input.IsActionPressed("Pause"))
         {
-            QuitGame();
+            TriggerGameOver(false, "You surrendered to the desolation.");
         }
     }
 
@@ -485,8 +490,7 @@ public partial class Player : RigidBody3D
 
         if (_currentOxygen <= 0)
         {
-            GD.Print("OXYGEN DEPLETED - GAME OVER");
-            QuitGame();
+            TriggerGameOver(false, "You suffocated in the toxic atmosphere.");
         }
     }
 
@@ -496,8 +500,21 @@ public partial class Player : RigidBody3D
         GD.Print($"Oxygen restored. Current: {_currentOxygen}");
     }
 
-    public void QuitGame()
+    public void TriggerGameOver(bool isWin, string reason)
     {
-        GetTree().Quit();
-    }    
+        if (_isGameOver) return;
+        _isGameOver = true;
+
+        if (GameOverScene != null)
+        {
+            GameOverScreen gameOver = GameOverScene.Instantiate<GameOverScreen>();
+            GetTree().CurrentScene.AddChild(gameOver);
+            gameOver.SetupScreen(isWin, reason);
+        }
+        else
+        {
+            GD.PrintErr("GameOverScene missing! " + reason);
+            GetTree().Quit();
+        }
+    }
 }

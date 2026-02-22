@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c76a61bxry3hn" path="res://Utility/Player/Player.cs" id="1_i1gnq"]
 [ext_resource type="PackedScene" uid="uid://crj3cegm4ee7p" path="res://Utility/Player/Scanner.tscn" id="2_qfbe8"]
+[ext_resource type="PackedScene" uid="uid://cicquvrar6jxi" path="res://Utility/Interfaces/GameOverScreen.tscn" id="2_tthwe"]
 [ext_resource type="Script" uid="uid://bswpl6lwyaid3" path="res://Utility/Player/InventoryManager.cs" id="3_1jbdv"]
 [ext_resource type="Script" uid="uid://lbqveeewfhb5" path="res://Utility/Player/UIButtonSound.cs" id="4_ndcul"]
 [ext_resource type="AudioStream" uid="uid://caooaeb0fp18t" path="res://Assets/Sound effects/Interaction/ButtonPress.mp3" id="5_k5uwn"]
@@ -18,6 +19,8 @@ radius = 0.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1jbdv"]
 radius = 0.20214844
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tthwe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0c18b"]
 albedo_color = Color(1, 0, 0, 1)
@@ -49,6 +52,7 @@ InteractionArea = NodePath("Camera/Area3D")
 InventoryUI = NodePath("HUD/InventoryLayer/InventoryManager")
 OxygenBar = NodePath("HUD/OxygenBar")
 LowOxygenPlayer = NodePath("LowOxygen")
+GameOverScene = ExtResource("2_tthwe")
 MiningRaycast = NodePath("Camera/Scanner/RayCast3D")
 LaserMesh = NodePath("MeshInstance3D2")
 ScannerAudioPlayer = NodePath("AudioStreamPlayer3D")
@@ -78,6 +82,62 @@ transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera/Area3D" unique_id=100034497]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, -1.4870535, 6.500121e-08)
 shape = SubResource("CapsuleShape3D_1jbdv")
+
+[node name="Panel" type="Panel" parent="Camera" unique_id=262391316]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera/Panel" unique_id=256964415]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_tthwe")
+
+[node name="TextureRect2" type="TextureRect" parent="Camera/Panel" unique_id=1718698445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 1.0
+offset_right = -3.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_tthwe")
+
+[node name="TextureRect3" type="TextureRect" parent="Camera/Panel" unique_id=369017683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_tthwe")
 
 [node name="FloorCheck" type="RayCast3D" parent="." unique_id=1617688472]
 transform = Transform3D(1, 0, 0, 0, 0.305, 0, 0, 0, 1, 0, -0.81336933, 0)
@@ -224,9 +284,11 @@ text = "Crafting Menu"
 
 [node name="LowOxygen" type="AudioStreamPlayer" parent="." unique_id=1665762437]
 stream = ExtResource("6_k5uwn")
+volume_db = -10.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1590921566]
 stream = ExtResource("7_0c18b")
+volume_db = -23.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1437799055]
 transform = Transform3D(1.9106855e-15, -4.371139e-08, -1, -1, -4.371139e-08, 0, -4.371139e-08, 1, -4.371139e-08, 0.33297044, 0.46297848, -0.98806953)
